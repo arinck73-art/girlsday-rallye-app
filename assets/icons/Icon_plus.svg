@@ -1,0 +1,13 @@
+<svg width="52" height="51" viewBox="0 0 52 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_20_356)">
+<ellipse cx="26" cy="25.5" rx="26" ry="25.5" fill="#EEEEEE"/>
+<rect x="15.5" y="15.5" width="20" height="20" rx="1.5" stroke="black"/>
+<line x1="25.5" y1="21.5" x2="25.5" y2="29.5" stroke="black" stroke-linecap="round"/>
+<line x1="29.5" y1="25.5" x2="21.5" y2="25.5" stroke="black" stroke-linecap="round"/>
+</g>
+<defs>
+<clipPath id="clip0_20_356">
+<rect width="52" height="51" fill="white"/>
+</clipPath>
+</defs>
+</svg>
