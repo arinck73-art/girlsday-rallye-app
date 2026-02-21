@@ -140,7 +140,13 @@ p{
 }
 
 /* ===== Forms ===== */
-.question{ margin: 0 0 16px; }
+.question{
+  margin: 0 0 5px;
+}
+
+.question + p{
+  margin-bottom: 10px;  
+}
 
 .label{
   display: block;
@@ -194,6 +200,7 @@ input.input::placeholder{
   top: 0;
   width: 100%;
   height: auto;
+  margin-top: 40px;
   object-fit: contain;
   z-index: 1;
 }
@@ -202,7 +209,7 @@ input.input::placeholder{
 .start-hero .float-confetti{
   position: absolute;
   inset: 0;
-  z-index: 2; /* zwischen Gebäude (1) und Figur (3) */
+  z-index: 2; 
   pointer-events: none;
   overflow: hidden;
 }
@@ -244,7 +251,6 @@ input.input::placeholder{
   white-space: nowrap;
 }
 
-/* Figur stabil skalieren, nicht abgeschnitten */
 .start-figure{
   position: absolute;
   right: 10px;
@@ -258,7 +264,7 @@ input.input::placeholder{
 .start-title.start-title--hero{
   position: absolute;
   left: var(--start-left);
-  top: 240px;          /* falls höher/tiefer: hier drehen */
+  top: 240px;         
   max-width: 62%;
   z-index: 4;
 
@@ -267,7 +273,6 @@ input.input::placeholder{
   margin: 0;
 }
 
-/* Text unter Hero links bündig zur Headline */
 .start-text.start-text--below{
   margin-top: 18px;
   padding-left: var(--start-left);
@@ -406,7 +411,7 @@ input.input::placeholder{
    OVERVIEW
    ========================================================= */
 .overview-title{
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.2;
   margin: 0 0 12px;
 }
@@ -599,6 +604,22 @@ input.input::placeholder{
   cursor: pointer;
 }
 
+.install-skip [data-lang]{
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: #8a8f98;
+  cursor: pointer;
+}
+
+.install-skip [data-lang].is-active{
+  color: var(--green);
+  font-weight: 600;
+}
+
 /* =========================================================
    CONFETTI (Done/Thanks)
    ========================================================= */
@@ -669,6 +690,51 @@ input.input::placeholder{
   width: 22px;
   height: 22px;
   display: block;
+}
+
+/* =========================
+   SUCCESS / THANKS FIX
+   ========================= */
+
+.done-content,
+.screen:has(.done-hero) .content{
+  display: flex;
+  flex-direction: column;
+}
+
+.done-hero{
+  width: 100%;
+  height: auto;
+  max-height: 260px;     
+  object-fit: contain;
+  display: block;
+  margin: 12px 0 16px;
+}
+
+.done-content .btn,
+.screen:has(.done-hero) .btn{
+  margin-top: auto;       
+}
+
+.done-title{ margin-bottom: 12px; }
+.done-text{ margin-bottom: 10px; }
+
+/* HELP HERO IMAGE */
+.help-hero{
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  object-fit: contain;
+  display: block;
+  margin: 8px 0 16px;
+}
+
+.faq h3{
+  margin: 10px 0 6px;
+}
+
+.faq p{
+  margin: 0 0 12px;
 }
 
 /* =========================================================

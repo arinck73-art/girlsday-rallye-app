@@ -1,8 +1,214 @@
 const root = document.getElementById("girlsday-app");
 if (!root) throw new Error('Container "#girlsday-app" nicht gefunden.');
 
-/* ===== Quiz ===== */
-const QUIZ = [
+/* ===== I18N ===== */
+const LANG_KEY = "girlsday_lang";
+
+function getLang() {
+  const raw = (localStorage.getItem(LANG_KEY) || "").toLowerCase();
+  return raw === "en" ? "en" : "de";
+}
+
+function setLang(lang) {
+  const safe = String(lang || "").toLowerCase() === "en" ? "en" : "de";
+  try {
+    localStorage.setItem(LANG_KEY, safe);
+  } catch {}
+}
+
+function t(key, vars = {}) {
+  const lang = getLang();
+  const de = I18N.de || {};
+  const pack = (lang === "en" ? I18N.en : I18N.de) || {};
+
+  let str = pack[key];
+  if (typeof str !== "string") str = de[key];
+  if (typeof str !== "string") str = key;
+
+  return str.replace(/\{(\w+)\}/g, (_, k) => {
+    const v = vars[k];
+    return v === undefined || v === null ? "" : String(v);
+  });
+}
+
+const I18N = {
+  de: {
+    // Nav
+    "nav.home": "Start",
+    "nav.overview": "Antworten",
+    "nav.help": "Hilfe",
+    "nav.rate": "Bewerten",
+
+    // Start
+    "start.heroTitle": "Hallo, ich bin<br>Frau N. Hofer!",
+    "start.text":
+      "Willkommen an unserem Institut! Entdeckt mit mir gemeinsam spannende Stationen rund um Mathematik und Forschung.",
+    "start.cta": "Los geht’s",
+    "start.lang.label": "Sprache:",
+    "start.lang.de": "Deutsch",
+    "start.lang.en": "English",
+
+    // Install
+    "install.title": "App zum Homescreen hinzufügen",
+    "install.text": "Für das beste Erlebnis empfehlen wir diese Installation.",
+    "install.tab.ios": "iPhone",
+    "install.tab.android": "Android",
+    "install.step.share": "Tippe unten auf „Teilen“",
+    "install.step.addHome": "Wähle „Zum Home-Bildschirm“",
+    "install.step.add": "Tippe auf „Hinzufügen“",
+    "install.continue": "Weiter zur Rallye",
+    "install.skip": "Ohne Installation fortfahren",
+    "install.androidAlt": "Android Installation",
+
+    // Quiz
+    "quiz.progress": "Frage {current} von {total}",
+    "quiz.questionTitle": "Frage {n}",
+    "quiz.optionsAria": "Antwortmöglichkeiten",
+    "quiz.back": "Zurück",
+    "quiz.next": "Weiter",
+    "quiz.done": "Fertig",
+    "quiz.saved": "Gespeichert.",
+
+    // Notice
+    "notice.notAllCorrect":
+      "Ihr habt leider nicht alle Fragen richtig beantwortet. Schaut in der Übersicht nach, welche Antworten noch nicht stimmen, und korrigiert sie.",
+
+    // Overview
+    "overview.headline.allCorrect":
+      "Zeigt eure richtigen Antworten und holt euch die Buchstaben für euer Lösungswort ab!",
+    "overview.headline.notAllCorrect":
+      "Ihr habt leider nicht alle Fragen richtig beantwortet. Schaut in der Übersicht nach, welche Antworten noch nicht stimmen, und korrigiert sie.",
+    "overview.notAnswered": "nicht beantwortet",
+    "overview.correct": "richtig",
+    "overview.wrong": "falsch",
+    "overview.editAria": "Antwort zu Frage {n} bearbeiten",
+
+    // Done
+    "done.title": "Toll gemacht!",
+    "done.text":
+      "Ihr habt alle Fragen richtig. Holt euch bei euren Betreuer*innen Buchstaben ab und findet das Lösungswort!",
+    "done.toOverview": "Zu euren Antworten",
+
+    // Help
+    "help.title": "FAQ",
+    "help.q1": "Wie funktioniert die Rallye?",
+    "help.a1": "Ihr beantwortet die Fragen gemeinsam. Eure Auswahl wird automatisch gespeichert.",
+    "help.q2": "Wie bearbeiten wir Antworten?",
+    "help.a2": "Geht auf „Antworten“ und klickt bei der Frage auf das Stift-Symbol.",
+    "help.q3": "Was passiert am Ende?",
+    "help.a3":
+      "Wenn ihr alles richtig habt, bekommt ihr den Abschluss. Sonst seht ihr in der Übersicht, was ihr nochmal prüfen solltet.",
+    "help.back": "Zurück",
+
+    // Rate
+    "rate.title": "Gebt uns Feedback",
+    "rate.intro":
+      "Wie hat euch der Girls’ Day gefallen? Eure Rückmeldung hilft uns, den Tag noch besser zu machen.",
+    "rate.scaleHint": "1 = trifft gar nicht zu, 5 = trifft voll zu",
+    "rate.q.understand": "Ich habe verstanden, was am Institut gemacht wird.",
+    "rate.q.fun": "Die Rallye war abwechslungsreich.",
+    "rate.q.easy": "Die Aufgaben waren gut machbar.",
+    "rate.q.recommend": "Ich würde den Girls’ Day hier weiterempfehlen.",
+    "rate.textLabel": "Was war besonders gut – und was könnten wir besser machen?",
+    "rate.textPlaceholder": "Kurz euer Feedback...",
+    "rate.submit": "Feedback abschicken",
+
+    // Thanks
+    "thanks.title": "Danke für euer Feedback!",
+    "thanks.text": "Eure Rückmeldung hilft uns, den Girls’ Day weiter zu verbessern.",
+    "thanks.backHome": "Zur Startseite",
+  },
+
+  en: {
+    // Nav
+    "nav.home": "Home",
+    "nav.overview": "Answers",
+    "nav.help": "Help",
+    "nav.rate": "Rate",
+
+    // Start
+    "start.heroTitle": "Hi, I’m<br>Ms N. Hofer!",
+    "start.text":
+      "Welcome to our institute! Explore exciting stations about mathematics and research together with me.",
+    "start.cta": "Let’s go",
+    "start.lang.label": "Language:",
+    "start.lang.de": "Deutsch",
+    "start.lang.en": "English",
+
+    // Install
+    "install.title": "Add the app to your Home Screen",
+    "install.text": "For the best experience, we recommend installing the app.",
+    "install.tab.ios": "iPhone",
+    "install.tab.android": "Android",
+    "install.step.share": 'Tap "Share" at the bottom',
+    "install.step.addHome": 'Choose "Add to Home Screen"',
+    "install.step.add": 'Tap "Add"',
+    "install.continue": "Continue to the rally",
+    "install.skip": "Continue without installing",
+    "install.androidAlt": "Android installation",
+
+    // Quiz
+    "quiz.progress": "Question {current} of {total}",
+    "quiz.questionTitle": "Question {n}",
+    "quiz.optionsAria": "Answer options",
+    "quiz.back": "Back",
+    "quiz.next": "Next",
+    "quiz.done": "Finish",
+    "quiz.saved": "Saved.",
+
+    // Notice
+    "notice.notAllCorrect":
+      "Not all answers are correct yet. Check the overview to see which ones are wrong and correct them.",
+
+    // Overview
+    "overview.headline.allCorrect":
+      "Show your correct answers and collect the letters for your solution word!",
+    "overview.headline.notAllCorrect":
+      "Not all answers are correct yet. Check the overview to see which ones are wrong and correct them.",
+    "overview.notAnswered": "not answered",
+    "overview.correct": "correct",
+    "overview.wrong": "wrong",
+    "overview.editAria": "Edit answer for question {n}",
+
+    // Done
+    "done.title": "Well done!",
+    "done.text":
+      "You answered everything correctly. Collect letters from your supervisors and find the solution word!",
+    "done.toOverview": "Go to your answers",
+
+    // Help
+    "help.title": "FAQ",
+    "help.q1": "How does the rally work?",
+    "help.a1": "Answer the questions together. Your selection is saved automatically.",
+    "help.q2": "How can we edit answers?",
+    "help.a2": 'Go to "Answers" and tap the pencil icon for the question.',
+    "help.q3": "What happens at the end?",
+    "help.a3":
+      "If everything is correct, you’ll get the completion screen. Otherwise, the overview shows what you should check again.",
+    "help.back": "Back",
+
+    // Rate
+    "rate.title": "Give us feedback",
+    "rate.intro":
+      "How did you like Girls’ Day? Your feedback helps us improve the day.",
+    "rate.scaleHint": "1 = not true at all, 5 = completely true",
+    "rate.q.understand": "I understood what the institute does.",
+    "rate.q.fun": "The rally was varied.",
+    "rate.q.easy": "The tasks were manageable.",
+    "rate.q.recommend": "I would recommend Girls’ Day here.",
+    "rate.textLabel": "What was great — and what could we improve?",
+    "rate.textPlaceholder": "Your feedback...",
+    "rate.submit": "Send feedback",
+
+    // Thanks
+    "thanks.title": "Thanks for your feedback!",
+    "thanks.text": "Your feedback helps us improve Girls’ Day.",
+    "thanks.backHome": "Back to home",
+  },
+};
+
+/* ===== Quiz (DE/EN) ===== */
+const QUIZ_DE = [
   {
     q: "Wofür steht die Abkürzung in Fraunhofer ITWM?",
     img: "./assets/img/quiz/q1_itwm.png",
@@ -54,14 +260,84 @@ const QUIZ = [
     q: "Wofür steht die Abkürzung »HiWi«?",
     img: "./assets/img/quiz/q8_hiwi.png",
     options: [
-      "Hochschulwissenschaftler:in",
-      "Hilfswissenschaftler:in",
-      "Hauptwissenschaftler:in",
-      "Hochschulassistent:in",
+      "Hochschulwissenschaftler*in",
+      "Hilfswissenschaftler*in",
+      "Hauptwissenschaftler*in",
+      "Hochschulassistent*in",
     ],
     correct: 1,
   },
 ];
+
+const QUIZ_EN = [
+  {
+    q: "What does the abbreviation “ITWM” stand for at Fraunhofer ITWM?",
+    img: "./assets/img/quiz/q1_itwm.png",
+    options: [
+      "Institute for Technical and Economic Mathematics",
+      "Institute for Industrial Mathematics",
+      "Institute for Technology and Business Mathematics",
+      "Institute for Theory and Economic Mathematics",
+    ],
+    correct: 1,
+  },
+  {
+    q: "What is Fraunhofer-Gesellschaft’s most famous invention?",
+    img: "./assets/img/quiz/q2_mp3.png",
+    options: ["MPEG", "WAV", "MP3", "AAC"],
+    correct: 2,
+  },
+  {
+    q: "What is the name of the mathematical sculpture / artwork in front of our building?",
+    img: "./assets/img/quiz/q3_hyperbel.png",
+    options: ["Paraboloid", "Hyperboloid", "Ellipsoid", "Torus"],
+    correct: 1,
+  },
+  {
+    q: "How many planted atriums does the Fraunhofer ITWM building have?",
+    img: "./assets/img/quiz/q4_atrien.png",
+    options: ["two", "three", "four", "five"],
+    correct: 1,
+  },
+  {
+    q: "What is our driving simulator called?",
+    img: "./assets/img/quiz/q5_rodos.png",
+    options: ["RADAR", "RODOS", "SIMCAR", "AUTOSIM"],
+    correct: 1,
+  },
+  {
+    q: "Which technology is also used for phone face recognition? Tip: our department BV is named after it.",
+    img: "./assets/img/quiz/q6_bv.png",
+    options: ["Pattern recognition", "Signal processing", "Image processing", "Data analysis"],
+    correct: 2,
+  },
+  {
+    q: "What did Joseph von Fraunhofer observe in sunlight using a prism?",
+    img: "./assets/img/quiz/q7_josef.png",
+    options: [
+      "Many dark lines in the color spectrum",
+      "Flashes in the light",
+      "A second sun",
+      "Moving color circles",
+    ],
+    correct: 0,
+  },
+  {
+    q: "What does the abbreviation “HiWi” stand for?",
+    img: "./assets/img/quiz/q8_hiwi.png",
+    options: [
+      "University scientist",
+      "Student assistant / research assistant",
+      "Lead scientist",
+      "University assistant",
+    ],
+    correct: 1,
+  },
+];
+
+function getQuiz() {
+  return getLang() === "en" ? QUIZ_EN : QUIZ_DE;
+}
 
 /* ===== Storage Keys ===== */
 const STORAGE_KEY = "girlsday_answers";
@@ -91,6 +367,7 @@ const ICON_IOS_PLUS = "./assets/icons/Icon_plus.svg";
 const ICON_IOS_CHECK = "./assets/icons/Icon_check.svg";
 
 const SUCCESS_IMAGE = "./assets/img/quiz/success-screen.jpg";
+const HELP_IMAGE = "./assets/img/help/help.png";
 
 /* ===== Storage ===== */
 function loadAnswers() {
@@ -111,6 +388,7 @@ function saveAnswer(questionIndex, optionIndex) {
 
 function countCorrect() {
   const answers = loadAnswers();
+  const QUIZ = getQuiz();
   let correct = 0;
   QUIZ.forEach((item, i) => {
     const picked = answers[String(i)];
@@ -158,6 +436,7 @@ function resumeLast() {
 
   if (last.screen === "install") return renderInstall(last.platform || "ios");
 
+  const QUIZ = getQuiz();
   if (last.screen === "question" && typeof last.index === "number") {
     const safeIndex = Math.min(Math.max(last.index, 0), QUIZ.length - 1);
     return renderQuestion(safeIndex);
@@ -186,22 +465,22 @@ function navHTML(active) {
     <nav class="bottom-nav" aria-label="Navigation">
       <button class="nav-item ${active === "home" ? "active" : ""}" data-nav="home" type="button">
         <img class="nav-icon-img" src="${ICON_HOME}" alt="" />
-        <span class="nav-label">Start</span>
+        <span class="nav-label">${escapeHtml(t("nav.home"))}</span>
       </button>
 
       <button class="nav-item ${active === "overview" ? "active" : ""}" data-nav="overview" type="button">
         <img class="nav-icon-img" src="${ICON_OVERVIEW}" alt="" />
-        <span class="nav-label">Antworten</span>
+        <span class="nav-label">${escapeHtml(t("nav.overview"))}</span>
       </button>
 
       <button class="nav-item ${active === "help" ? "active" : ""}" data-nav="help" type="button">
         <img class="nav-icon-img" src="${ICON_HELP}" alt="" />
-        <span class="nav-label">Hilfe</span>
+        <span class="nav-label">${escapeHtml(t("nav.help"))}</span>
       </button>
 
       <button class="nav-item ${active === "rate" ? "active" : ""}" data-nav="rate" type="button">
         <img class="nav-icon-img" src="${ICON_RATE}" alt="" />
-        <span class="nav-label">Bewerten</span>
+        <span class="nav-label">${escapeHtml(t("nav.rate"))}</span>
       </button>
     </nav>
   `;
@@ -235,6 +514,7 @@ function escapeHtml(str) {
 }
 
 function progressHTML(index) {
+  const QUIZ = getQuiz();
   const total = QUIZ.length;
   const current = index + 1;
   const pct = Math.round((current / total) * 100);
@@ -242,7 +522,7 @@ function progressHTML(index) {
   return `
     <div class="progress">
       <div class="progress-meta">
-        <span class="progress-step">Frage ${current} von ${total}</span>
+        <span class="progress-step">${escapeHtml(t("quiz.progress", { current, total }))}</span>
         <span class="progress-percent">${pct}%</span>
       </div>
 
@@ -352,8 +632,8 @@ function launchStartMotion() {
   const H = rect.height || 420;
 
   const isMobile = W < 480;
-  const starCount = reduce ? 6 : (isMobile ? 10 : 12);
-  const formulaCount = reduce ? 4 : (isMobile ? 8 : 10);
+  const starCount = reduce ? 6 : isMobile ? 10 : 12;
+  const formulaCount = reduce ? 4 : isMobile ? 8 : 10;
 
   const placed = [];
   function placeNoOverlap(size, zoneFn, tries = 18) {
@@ -444,6 +724,7 @@ function launchStartMotion() {
 
 /* ===== Multiple Choice ===== */
 function optionsHTML(index, selectedIndex) {
+  const QUIZ = getQuiz();
   const name = `q_${index}`;
   return QUIZ[index].options
     .map((opt, i) => {
@@ -489,6 +770,13 @@ function getCheckedValue(name) {
 function renderStart() {
   setLastScreen({ screen: "home" });
 
+  const lang = getLang();
+  const isEN = lang === "en";
+
+  // Button-Reset ohne neue CSS
+  const langBtnStyle =
+    "appearance:none;border:0;background:transparent;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;";
+
   root.innerHTML = `
     <div class="screen screen--start">
       ${headerHTML()}
@@ -498,20 +786,50 @@ function renderStart() {
           <img class="start-building" src="${START_BUILDING}" alt="" />
           <div class="float-confetti" id="startMotion" aria-hidden="true"></div>
           <img class="start-figure" src="${START_HOFER}" alt="Frau N. Hofer" />
-          <h1 class="start-title start-title--hero">Hallo, ich bin<br>Frau N. Hofer!</h1>
+          <h1 class="start-title start-title--hero">${t("start.heroTitle")}</h1>
         </div>
 
         <p class="start-text start-text--below">
-          Willkommen an unserem Institut! Entdeckt mit mir gemeinsam spannende
-          Stationen rund um Mathematik und Forschung.
+          ${escapeHtml(t("start.text"))}
         </p>
 
-        <button class="btn start-cta" id="startBtn" type="button">Los geht’s</button>
+        <button class="btn start-cta" id="startBtn" type="button">${escapeHtml(t("start.cta"))}</button>
+
+        <!-- Sprachwahl: dezent, unter dem Button -->
+        <div class="install-skip" aria-label="${escapeHtml(t("start.lang.label"))}" style="padding-top:10px;">
+          <span style="margin-right:6px;">${escapeHtml(t("start.lang.label"))}</span>
+<button
+  type="button"
+  data-lang="de"
+  class="${!isEN ? "is-active" : ""}"
+  aria-pressed="${!isEN}"
+>
+  ${escapeHtml(t("start.lang.de"))}
+</button>
+
+<span aria-hidden="true"> · </span>
+
+<button
+  type="button"
+  data-lang="en"
+  class="${isEN ? "is-active" : ""}"
+  aria-pressed="${isEN}"
+>
+  ${escapeHtml(t("start.lang.en"))}
+</button>
+        </div>
       </div>
 
       ${navHTML("home")}
     </div>
   `;
+
+  document.querySelectorAll('[data-lang]').forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      setLang(e.currentTarget.dataset.lang);
+      renderStart();
+    });
+  });
 
   document.getElementById("startBtn")?.addEventListener("click", () => renderInstall("ios"));
 
@@ -531,12 +849,16 @@ function renderInstall(platform = "ios") {
       <div class="content install-content">
         <img class="install-hero" src="${INSTALL_ASSETS.hero}" alt="" />
 
-        <h2>App zum Homescreen hinzufügen</h2>
-        <p>Für das beste Erlebnis empfehlen wir diese Installation.</p>
+        <h2>${escapeHtml(t("install.title"))}</h2>
+        <p>${escapeHtml(t("install.text"))}</p>
 
         <div class="install-tabs">
-          <button class="tab-btn ${isIOS ? "active" : ""}" data-platform="ios" type="button">iPhone</button>
-          <button class="tab-btn ${!isIOS ? "active" : ""}" data-platform="android" type="button">Android</button>
+          <button class="tab-btn ${isIOS ? "active" : ""}" data-platform="ios" type="button">${escapeHtml(
+            t("install.tab.ios")
+          )}</button>
+          <button class="tab-btn ${!isIOS ? "active" : ""}" data-platform="android" type="button">${escapeHtml(
+            t("install.tab.android")
+          )}</button>
         </div>
 
         ${
@@ -545,29 +867,31 @@ function renderInstall(platform = "ios") {
               <div class="install-steps">
                 <div class="install-step">
                   <img class="install-step-icon" src="${ICON_IOS_SHARE}" alt="" />
-                  <div class="install-step-text">Tippe unten auf „Teilen“</div>
+                  <div class="install-step-text">${escapeHtml(t("install.step.share"))}</div>
                 </div>
 
                 <div class="install-step">
                   <img class="install-step-icon" src="${ICON_IOS_PLUS}" alt="" />
-                  <div class="install-step-text">Wähle „Zum Home-Bildschirm“</div>
+                  <div class="install-step-text">${escapeHtml(t("install.step.addHome"))}</div>
                 </div>
 
                 <div class="install-step">
                   <img class="install-step-icon" src="${ICON_IOS_CHECK}" alt="" />
-                  <div class="install-step-text">Tippe auf „Hinzufügen“</div>
+                  <div class="install-step-text">${escapeHtml(t("install.step.add"))}</div>
                 </div>
               </div>
             `
             : `
-              <img class="install-android-img" src="${INSTALL_ASSETS.androidStep}" alt="Android Installation" />
+              <img class="install-android-img" src="${INSTALL_ASSETS.androidStep}" alt="${escapeHtml(
+                t("install.androidAlt")
+              )}" />
             `
         }
 
-        <button class="btn" id="installContinueBtn" type="button">Weiter zur Rallye</button>
+        <button class="btn" id="installContinueBtn" type="button">${escapeHtml(t("install.continue"))}</button>
 
         <p class="install-skip" id="installSkipBtn" role="button" tabindex="0">
-          Ohne Installation fortfahren
+          ${escapeHtml(t("install.skip"))}
         </p>
       </div>
 
@@ -575,7 +899,7 @@ function renderInstall(platform = "ios") {
     </div>
   `;
 
-  document.querySelectorAll(".tab-btn").forEach((btn) => {
+  document.querySelectorAll(".tab-btn[data-platform]").forEach((btn) => {
     btn.addEventListener("click", (e) => renderInstall(e.currentTarget.dataset.platform));
   });
 
@@ -593,11 +917,13 @@ function renderInstall(platform = "ios") {
 function renderQuestion(index) {
   setLastScreen({ screen: "question", index });
 
+  const QUIZ = getQuiz();
+
   const answers = loadAnswers();
   const selected = typeof answers[String(index)] === "number" ? answers[String(index)] : null;
 
   const isLast = index === QUIZ.length - 1;
-  const nextLabel = isLast ? "Fertig" : "Weiter";
+  const nextLabel = isLast ? t("quiz.done") : t("quiz.next");
 
   const imgSrc = QUIZ[index].img;
 
@@ -610,16 +936,16 @@ function renderQuestion(index) {
 
         ${progressHTML(index)}
 
-        <h2 class="question">Frage ${index + 1}</h2>
+        <h2 class="question">${escapeHtml(t("quiz.questionTitle", { n: index + 1 }))}</h2>
         <p>${escapeHtml(QUIZ[index].q)}</p>
 
-        <div class="mc-group" role="radiogroup" aria-label="Antwortmöglichkeiten">
+        <div class="mc-group" role="radiogroup" aria-label="${escapeHtml(t("quiz.optionsAria"))}">
           ${optionsHTML(index, selected)}
         </div>
 
         <div class="btn-row">
-          <button class="btn secondary" id="backBtn" type="button"><span>Zurück</span></button>
-          <button class="btn" id="nextBtn" type="button">${nextLabel}</button>
+          <button class="btn secondary" id="backBtn" type="button"><span>${escapeHtml(t("quiz.back"))}</span></button>
+          <button class="btn" id="nextBtn" type="button">${escapeHtml(nextLabel)}</button>
         </div>
 
         <div class="status" id="status" aria-live="polite"></div>
@@ -635,7 +961,7 @@ function renderQuestion(index) {
       if (picked !== null) {
         saveAnswer(index, picked);
         const st = document.getElementById("status");
-        if (st) st.textContent = "Gespeichert.";
+        if (st) st.textContent = t("quiz.saved");
       }
     });
   });
@@ -656,9 +982,7 @@ function renderQuestion(index) {
 
     if (correct === total) return renderDone();
 
-    setNotice(
-      "Ihr habt leider nicht alle Fragen richtig beantwortet. Schaut in der Übersicht nach, welche Antworten noch nicht stimmen, und korrigiert sie."
-    );
+    setNotice(t("notice.notAllCorrect"));
     return renderOverview();
   });
 
@@ -668,14 +992,13 @@ function renderQuestion(index) {
 function renderOverview() {
   setLastScreen({ screen: "overview" });
 
-  const notice = popNotice();
+  const QUIZ = getQuiz();
+
   const correct = countCorrect();
   const total = QUIZ.length;
   const allCorrect = correct === total;
 
-  const headline = allCorrect
-    ? "Zeigt eure richtigen Antworten und holt euch die Buchstaben für euer Lösungswort ab!"
-    : "Ihr habt leider nicht alle Fragen richtig beantwortet. Schaut in der Übersicht nach, welche Antworten noch nicht stimmen, und korrigiert sie.";
+  const headline = allCorrect ? t("overview.headline.allCorrect") : t("overview.headline.notAllCorrect");
 
   const answers = loadAnswers();
   let list = "";
@@ -694,8 +1017,10 @@ function renderOverview() {
     list += `
       <div class="overview-item">
         <div class="overview-head">
-          <strong>Frage ${i + 1}</strong>
-          <span class="q-status ${statusClass}" aria-label="${!has ? "nicht beantwortet" : isCorrect ? "richtig" : "falsch"}">
+          <strong>${escapeHtml(t("quiz.questionTitle", { n: i + 1 }))}</strong>
+          <span class="q-status ${statusClass}" aria-label="${escapeHtml(
+      !has ? t("overview.notAnswered") : isCorrect ? t("overview.correct") : t("overview.wrong")
+    )}">
             ${statusSymbol}
           </span>
         </div>
@@ -706,7 +1031,9 @@ function renderOverview() {
           ${has ? escapeHtml(pickedText) : ""}
         </div>
 
-        <button class="editIconBtn" data-index="${i}" type="button" aria-label="Antwort zu Frage ${i + 1} bearbeiten">
+        <button class="editIconBtn" data-index="${i}" type="button" aria-label="${escapeHtml(
+      t("overview.editAria", { n: i + 1 })
+    )}">
           <img class="editIconImg" src="${ICON_EDIT}" alt="" />
         </button>
       </div>
@@ -719,7 +1046,6 @@ function renderOverview() {
 
       <div class="content">
         <h2 class="overview-title">${escapeHtml(headline)}</h2>
-        ${notice ? `<div class="overview-notice">${escapeHtml(notice)}</div>` : ""}
         ${list}
       </div>
 
@@ -746,15 +1072,15 @@ function renderDone() {
       ${headerHTML()}
 
       <div class="content done-content">
-        <h1 class="done-title">Toll gemacht!</h1>
+        <h1 class="done-title">${escapeHtml(t("done.title"))}</h1>
 
         <p class="done-text">
-          Ihr habt alle Fragen richtig. Holt euch bei euren Betreuer:innen Buchstaben ab und findet das Lösungswort!
+          ${escapeHtml(t("done.text"))}
         </p>
 
         <img class="done-hero" src="${SUCCESS_IMAGE}" alt="" />
 
-        <button class="btn" id="overviewBtn" type="button">Zu euren Antworten</button>
+        <button class="btn" id="overviewBtn" type="button">${escapeHtml(t("done.toOverview"))}</button>
       </div>
 
       ${navHTML("")}
@@ -775,22 +1101,24 @@ function renderHelp(returnTo = null) {
     <div class="screen">
       ${headerHTML()}
 
-      <div class="content">
-        <h2>FAQ</h2>
+    <div class="content">
+      <h2>${escapeHtml(t("help.title"))}</h2>
 
-        <div class="faq">
-          <h3>Wie funktioniert die Rallye?</h3>
-          <p>Ihr beantwortet die Fragen gemeinsam. Eure Auswahl wird automatisch gespeichert.</p>
+      <img class="help-hero" src="${HELP_IMAGE}" alt="" />
 
-          <h3>Wie bearbeiten wir Antworten?</h3>
-          <p>Geht auf „Antworten“ und klickt bei der Frage auf das Stift-Symbol.</p>
+      <div class="faq">
+        <h3>${escapeHtml(t("help.q1"))}</h3>
+        <p>${escapeHtml(t("help.a1"))}</p>
 
-          <h3>Was passiert am Ende?</h3>
-          <p>Wenn ihr alles richtig habt, bekommt ihr den Abschluss. Sonst seht ihr in der Übersicht, was ihr nochmal prüfen solltet.</p>
-        </div>
+        <h3>${escapeHtml(t("help.q2"))}</h3>
+        <p>${escapeHtml(t("help.a2"))}</p>
 
-        <button class="btn" id="backToRallyBtn" type="button">Zurück</button>
+        <h3>${escapeHtml(t("help.q3"))}</h3>
+        <p>${escapeHtml(t("help.a3"))}</p>
       </div>
+
+      <button class="btn" id="backToRallyBtn" type="button">${escapeHtml(t("help.back"))}</button>
+    </div>
 
       ${navHTML("help")}
     </div>
@@ -829,37 +1157,38 @@ function renderRate() {
       ${headerHTML()}
 
       <div class="content">
-        <h2>Gebt uns Feedback</h2>
+        <h2>${escapeHtml(t("rate.title"))}</h2>
         <p class="intro-text">
-          Wie hat euch der Girls’ Day gefallen? Eure Rückmeldung hilft uns,
-          den Tag noch besser zu machen.
+          ${escapeHtml(t("rate.intro"))}
         </p>
-        <p class="scale-hint">1 = trifft gar nicht zu, 5 = trifft voll zu</p>
+        <p class="scale-hint">${escapeHtml(t("rate.scaleHint"))}</p>
 
         <div class="scale-block">
-          <div class="scale-q">Ich habe verstanden, was am Institut gemacht wird.</div>
+          <div class="scale-q">${escapeHtml(t("rate.q.understand"))}</div>
           <div class="scale-row">${scaleRadios("q_understand", saved.q_understand)}</div>
         </div>
 
         <div class="scale-block">
-          <div class="scale-q">Die Rallye war abwechslungsreich.</div>
+          <div class="scale-q">${escapeHtml(t("rate.q.fun"))}</div>
           <div class="scale-row">${scaleRadios("q_fun", saved.q_fun)}</div>
         </div>
 
         <div class="scale-block">
-          <div class="scale-q">Die Aufgaben waren gut machbar.</div>
+          <div class="scale-q">${escapeHtml(t("rate.q.easy"))}</div>
           <div class="scale-row">${scaleRadios("q_easy", saved.q_easy)}</div>
         </div>
 
         <div class="scale-block">
-          <div class="scale-q">Ich würde den Girls’ Day hier weiterempfehlen.</div>
+          <div class="scale-q">${escapeHtml(t("rate.q.recommend"))}</div>
           <div class="scale-row">${scaleRadios("q_recommend", saved.q_recommend)}</div>
         </div>
 
-        <label class="label" for="rateText">Was war besonders gut – und was könnten wir besser machen?</label>
-        <textarea id="rateText" class="input" rows="4" placeholder="Kurz euer Feedback...">${escapeHtml(saved.text || "")}</textarea>
+        <label class="label" for="rateText">${escapeHtml(t("rate.textLabel"))}</label>
+        <textarea id="rateText" class="input" rows="4" placeholder="${escapeHtml(
+          t("rate.textPlaceholder")
+        )}">${escapeHtml(saved.text || "")}</textarea>
 
-        <button class="btn" id="rateSaveBtn" type="button">Feedback abschicken</button>
+        <button class="btn" id="rateSaveBtn" type="button">${escapeHtml(t("rate.submit"))}</button>
       </div>
 
       ${navHTML("rate")}
@@ -891,12 +1220,12 @@ function renderThanks() {
       ${headerHTML()}
 
       <div class="content">
-        <h1>Danke für euer Feedback!</h1>
-        <p>Eure Rückmeldung hilft uns, den Girls’ Day weiter zu verbessern.</p>
+        <h1>${escapeHtml(t("thanks.title"))}</h1>
+        <p>${escapeHtml(t("thanks.text"))}</p>
 
         <img class="done-hero" src="${SUCCESS_IMAGE}" alt="" />
 
-        <button class="btn" id="backHomeBtn" type="button">Zur Startseite</button>
+        <button class="btn" id="backHomeBtn" type="button">${escapeHtml(t("thanks.backHome"))}</button>
       </div>
 
       ${navHTML("home")}
