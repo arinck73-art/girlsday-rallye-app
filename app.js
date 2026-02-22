@@ -109,7 +109,7 @@ const I18N = {
     // Done
     "done.title": "Toll gemacht!",
     "done.text":
-      "Ihr habt alle Fragen richtig. Holt euch bei euren Betreuer*innen Buchstaben ab und findet das Lösungswort!",
+      "Ihr habt alle Fragen richtig. Holt euch bei euren Betreuer:innen Buchstaben ab und findet das Lösungswort!",
     "done.toOverview": "Zu euren Antworten",
 
     // Help
@@ -283,10 +283,10 @@ const QUIZ_DE = [
     q: "Wofür steht die Abkürzung »HiWi«?",
     img: "./assets/img/quiz/q8_hiwi.png",
     options: [
-      "Hochschulwissenschaftler*in",
-      "Hilfswissenschaftler*in",
-      "Hauptwissenschaftler*in",
-      "Hochschulassistent*in",
+      "Hochschulwissenschaftler:in",
+      "Hilfswissenschaftler:in",
+      "Hauptwissenschaftler:in",
+      "Hochschulassistent:in",
     ],
     correct: 1,
   },
