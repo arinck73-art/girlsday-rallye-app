@@ -1,6 +1,29 @@
 const root = document.getElementById("girlsday-app");
 if (!root) throw new Error('Container "#girlsday-app" nicht gefunden.');
 
+/* ===== PWA Basics (NEU) ===== */
+(function registerSW() {
+  if (!("serviceWorker" in navigator)) return;
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/service-worker.js").catch(() => {});
+  });
+})();
+
+function detectPlatform() {
+  const ua = navigator.userAgent || "";
+  const isIOS =
+    /iPad|iPhone|iPod/.test(ua) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  return isIOS ? "ios" : "android";
+}
+
+function isStandalone() {
+  return (
+    (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) ||
+    (window.navigator && window.navigator.standalone === true)
+  );
+}
+
 /* ===== I18N ===== */
 const LANG_KEY = "girlsday_lang";
 
@@ -381,9 +404,11 @@ function loadAnswers() {
 }
 
 function saveAnswer(questionIndex, optionIndex) {
-  const answers = loadAnswers();
-  answers[String(questionIndex)] = optionIndex;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
+  try {
+    const answers = loadAnswers();
+    answers[String(questionIndex)] = optionIndex;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
+  } catch {}
 }
 
 function countCorrect() {
@@ -773,7 +798,7 @@ function renderStart() {
   const lang = getLang();
   const isEN = lang === "en";
 
-  // Button-Reset ohne neue CSS
+  // Button-Reset ohne neue CSS (unverändert, auch wenn ungenutzt)
   const langBtnStyle =
     "appearance:none;border:0;background:transparent;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;";
 
@@ -798,25 +823,25 @@ function renderStart() {
         <!-- Sprachwahl: dezent, unter dem Button -->
         <div class="install-skip" aria-label="${escapeHtml(t("start.lang.label"))}" style="padding-top:10px;">
           <span style="margin-right:6px;">${escapeHtml(t("start.lang.label"))}</span>
-<button
-  type="button"
-  data-lang="de"
-  class="${!isEN ? "is-active" : ""}"
-  aria-pressed="${!isEN}"
->
-  ${escapeHtml(t("start.lang.de"))}
-</button>
+          <button
+            type="button"
+            data-lang="de"
+            class="${!isEN ? "is-active" : ""}"
+            aria-pressed="${!isEN}"
+          >
+            ${escapeHtml(t("start.lang.de"))}
+          </button>
 
-<span aria-hidden="true"> · </span>
+          <span aria-hidden="true"> · </span>
 
-<button
-  type="button"
-  data-lang="en"
-  class="${isEN ? "is-active" : ""}"
-  aria-pressed="${isEN}"
->
-  ${escapeHtml(t("start.lang.en"))}
-</button>
+          <button
+            type="button"
+            data-lang="en"
+            class="${isEN ? "is-active" : ""}"
+            aria-pressed="${isEN}"
+          >
+            ${escapeHtml(t("start.lang.en"))}
+          </button>
         </div>
       </div>
 
@@ -831,7 +856,11 @@ function renderStart() {
     });
   });
 
-  document.getElementById("startBtn")?.addEventListener("click", () => renderInstall("ios"));
+  // NEU: installiert -> direkt Rallye; sonst Install je nach Plattform
+  document.getElementById("startBtn")?.addEventListener("click", () => {
+    if (isStandalone()) return renderQuestion(0);
+    return renderInstall(detectPlatform());
+  });
 
   bindNav();
   launchStartMotion();
@@ -1019,8 +1048,8 @@ function renderOverview() {
         <div class="overview-head">
           <strong>${escapeHtml(t("quiz.questionTitle", { n: i + 1 }))}</strong>
           <span class="q-status ${statusClass}" aria-label="${escapeHtml(
-      !has ? t("overview.notAnswered") : isCorrect ? t("overview.correct") : t("overview.wrong")
-    )}">
+            !has ? t("overview.notAnswered") : isCorrect ? t("overview.correct") : t("overview.wrong")
+          )}">
             ${statusSymbol}
           </span>
         </div>
@@ -1032,8 +1061,8 @@ function renderOverview() {
         </div>
 
         <button class="editIconBtn" data-index="${i}" type="button" aria-label="${escapeHtml(
-      t("overview.editAria", { n: i + 1 })
-    )}">
+          t("overview.editAria", { n: i + 1 })
+        )}">
           <img class="editIconImg" src="${ICON_EDIT}" alt="" />
         </button>
       </div>

@@ -4,28 +4,33 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Girls' Day Rallye</title>
-  <link rel="manifest" href="./manifest.webmanifest">
-<!-- Favicon -->
-<link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon_32px.png">
-<link rel="apple-touch-icon" sizes="180x180" href="./favicon/favicon_180px.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="icon" type="image/png" sizes="192x192" href="./favicon/favicon_192px.png">
-<link rel="icon" type="image/png" sizes="512x512" href="./favicon/favicon_512px.png">
-<!-- PWA -->
-<meta name="theme-color" content="#7a3964">
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#7a3964">
+
+  <!-- iOS Add to Home Screen -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Girls' Day">
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon_32px.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/favicon_180px.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon/favicon_192px.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon/favicon_512px.png">
+
   <!-- Open Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./app.css" />
+  <link rel="stylesheet" href="/app.css" />
 </head>
 <body>
-
   <div id="girlsday-app"></div>
 
-  <script src="./app.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="/app.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
 </body>
 </html>
