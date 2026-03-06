@@ -73,7 +73,7 @@ const I18N = {
     "intro.text1":
       "Auf Eurer Reise durch das Institut bekommt Ihr viele spannende Informationen. Wenn Ihr genau hinhört, erhaltet Ihr auch die Antworten auf unsere Rallye-Fragen an den einzelnen Stationen!",
     "intro.text2":
-      "Für jede richtige Antwort erhältst Du zwei Buchstaben von den Betreuer:innen, die am Ende dann zu einem Lösungswort führen.",
+      "Für jede richtige Antwort erhältst Du zwei Buchstaben, die am Ende dann zu einem Lösungswort führen.",
     "intro.cta": "Weiter",
 
     "install.title": "App zum Homescreen hinzufügen",
@@ -119,7 +119,7 @@ const I18N = {
     "help.a2": "Geht auf „Antworten“ und klickt bei der Frage auf das Stift-Symbol.",
     "help.q3": "Was passiert am Ende?",
     "help.a3":
-      "Wenn Ihr alles richtig habt, bekommt Ihr den Abschluss. Sonst seht Ihr in der Übersicht, was Ihr nochmal prüfen solltet.",
+      "Wenn ihr alles richtig habt, bekommt ihr den Abschluss. Sonst seht ihr in der Übersicht, was ihr nochmal prüfen solltet.",
     "help.back": "Zurück",
 
     "rate.title": "Gebt uns Feedback",
@@ -224,6 +224,7 @@ const I18N = {
   },
 };
 
+/* ===== Quiz ===== */
 const QUIZ_DE = [
   {
     q: "Wofür steht die Abkürzung in Fraunhofer ITWM?",
@@ -355,11 +356,13 @@ function getQuiz() {
   return getLang() === "en" ? QUIZ_EN : QUIZ_DE;
 }
 
+/* ===== Storage Keys ===== */
 const STORAGE_KEY = "girlsday_answers";
 const RATE_KEY = "girlsday_rating";
 const LAST_KEY = "girlsday_last";
 const NOTICE_KEY = "girlsday_notice";
 
+/* ===== Assets ===== */
 const LOGO_ITWM = "./assets/logos/logo-itwm.svg";
 
 const START_BUILDING = "./assets/img/start/itwm-gebaeude.png";
@@ -384,6 +387,7 @@ const ICON_IOS_CHECK = "./assets/icons/Icon_check.svg";
 const SUCCESS_IMAGE = "./assets/img/quiz/success-screen.jpg";
 const HELP_IMAGE = "./assets/img/help/help.png";
 
+/* ===== Storage ===== */
 function loadAnswers() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -413,6 +417,33 @@ function countCorrect() {
   return correct;
 }
 
+function getWrongQuestionIndices() {
+  const answers = loadAnswers();
+  const QUIZ = getQuiz();
+
+  return QUIZ.reduce((acc, item, i) => {
+    const picked = answers[String(i)];
+    const isCorrect =
+      typeof picked === "number" &&
+      Number.isFinite(picked) &&
+      picked === item.correct;
+
+    if (!isCorrect) acc.push(i);
+    return acc;
+  }, []);
+}
+
+function getNextWrongQuestionIndex(currentIndex) {
+  const wrong = getWrongQuestionIndices();
+  if (!wrong.length) return null;
+
+  if (wrong.includes(currentIndex)) return currentIndex;
+
+  const nextAfterCurrent = wrong.find((idx) => idx > currentIndex);
+  return nextAfterCurrent ?? wrong[0];
+}
+
+/* ===== Notice ===== */
 function setNotice(text) {
   try {
     localStorage.setItem(NOTICE_KEY, String(text || ""));
@@ -429,6 +460,7 @@ function popNotice() {
   }
 }
 
+/* ===== Last State ===== */
 function setLastScreen(payload) {
   try {
     localStorage.setItem(LAST_KEY, JSON.stringify(payload));
@@ -454,7 +486,7 @@ function resumeLast() {
   const QUIZ = getQuiz();
   if (last.screen === "question" && typeof last.index === "number") {
     const safeIndex = Math.min(Math.max(last.index, 0), QUIZ.length - 1);
-    return renderQuestion(safeIndex);
+    return renderQuestion(safeIndex, Boolean(last.fromOverview));
   }
 
   if (last.screen === "overview") return renderOverview();
@@ -466,6 +498,7 @@ function resumeLast() {
   return renderStart();
 }
 
+/* ===== UI Helpers ===== */
 function headerHTML() {
   return `
     <div class="header header-start">
@@ -551,6 +584,7 @@ function confettiHTML() {
   return `<div class="confetti" id="confetti"></div>`;
 }
 
+/* ===== Confetti ===== */
 function launchConfetti() {
   const host = document.getElementById("confetti");
   if (!host) return;
@@ -611,6 +645,7 @@ function launchConfetti() {
   }, 4200);
 }
 
+/* ===== Start Motion ===== */
 function launchStartMotion() {
   const host = document.getElementById("startMotion");
   if (!host) return;
@@ -734,6 +769,7 @@ function launchStartMotion() {
   }
 }
 
+/* ===== Multiple Choice ===== */
 function optionsHTML(index, selectedIndex) {
   const QUIZ = getQuiz();
   const name = `q_${index}`;
@@ -757,6 +793,7 @@ function getPickedOptionIndex(index) {
   return Number.isFinite(n) ? n : null;
 }
 
+/* ===== Rating ===== */
 function scaleRadios(name, selectedValue) {
   const selected = String(selectedValue || "");
   return [1, 2, 3, 4, 5]
@@ -776,6 +813,7 @@ function getCheckedValue(name) {
   return el ? el.value : "";
 }
 
+/* ===== Screens ===== */
 function renderStart() {
   setLastScreen({ screen: "home" });
 
@@ -959,14 +997,14 @@ function renderInstall(platform = "ios") {
   bindNav();
 }
 
-function renderQuestion(index) {
-  setLastScreen({ screen: "question", index });
+function renderQuestion(index, fromOverview = false) {
+  setLastScreen({ screen: "question", index, fromOverview });
 
   const QUIZ = getQuiz();
   const answers = loadAnswers();
   const selected = typeof answers[String(index)] === "number" ? answers[String(index)] : null;
   const isLast = index === QUIZ.length - 1;
-  const nextLabel = isLast ? t("quiz.done") : t("quiz.next");
+  const nextLabel = fromOverview ? t("quiz.next") : isLast ? t("quiz.done") : t("quiz.next");
   const imgSrc = QUIZ[index].img;
 
   root.innerHTML = `
@@ -1009,6 +1047,7 @@ function renderQuestion(index) {
   });
 
   document.getElementById("backBtn")?.addEventListener("click", () => {
+    if (fromOverview) return renderOverview();
     if (index > 0) return renderQuestion(index - 1);
     return renderStart();
   });
@@ -1017,10 +1056,19 @@ function renderQuestion(index) {
     const picked = getPickedOptionIndex(index);
     if (picked !== null) saveAnswer(index, picked);
 
-    if (!isLast) return renderQuestion(index + 1);
-
     const correct = countCorrect();
     const total = QUIZ.length;
+
+    if (fromOverview) {
+      if (correct === total) return renderDone();
+
+      const nextWrong = getNextWrongQuestionIndex(index);
+      if (nextWrong !== null) return renderQuestion(nextWrong, true);
+
+      return renderOverview();
+    }
+
+    if (!isLast) return renderQuestion(index + 1);
 
     if (correct === total) return renderDone();
 
@@ -1094,7 +1142,7 @@ function renderOverview() {
   document.querySelectorAll(".editIconBtn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const idx = parseInt(e.currentTarget.dataset.index, 10);
-      renderQuestion(idx);
+      renderQuestion(idx, true);
     });
   });
 
@@ -1169,7 +1217,7 @@ function renderHelp(returnTo = null) {
     if (!target) return renderStart();
     if (target.screen === "intro") return renderIntro();
     if (target.screen === "install") return renderInstall(target.platform || "ios");
-    if (target.screen === "question") return renderQuestion(target.index ?? 0);
+    if (target.screen === "question") return renderQuestion(target.index ?? 0, Boolean(target.fromOverview));
     if (target.screen === "overview") return renderOverview();
     if (target.screen === "rate") return renderRate();
     if (target.screen === "done") return renderDone();
@@ -1277,8 +1325,10 @@ function renderThanks() {
   launchConfetti();
 }
 
+/* ===== Start ===== */
 resumeLast();
 
+/* ===== PWA: Service Worker Registration ===== */
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
