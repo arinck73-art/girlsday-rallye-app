@@ -131,10 +131,10 @@ const I18N = {
     "rate.q.easy": "Die Aufgaben waren gut machbar.",
     "rate.q.recommend": "Ich würde den Girls’ Day hier weiterempfehlen.",
     "rate.textLabel": "Was war besonders gut – und was könnten wir besser machen?",
-    "rate.textPlaceholder": "Kurz euer Feedback...",
+    "rate.textPlaceholder": "Kurz Euer Feedback...",
     "rate.submit": "Feedback abschicken",
 
-    "thanks.title": "Danke für euer Feedback!",
+    "thanks.title": "Danke für Euer Feedback!",
     "thanks.text": "Eure Rückmeldung hilft uns, den Girls’ Day weiter zu verbessern.",
     "thanks.backHome": "Zur Startseite",
   },
