@@ -99,7 +99,7 @@ const I18N = {
       "Ihr habt leider nicht alle Fragen richtig beantwortet. Schaut in der Übersicht nach, welche Antworten noch nicht stimmen, und korrigiert sie.",
 
     "overview.headline.allCorrect":
-      "Zeigt eure richtigen Antworten und holt euch die Buchstaben für euer Lösungswort ab!",
+      "Zeigt Eure richtigen Antworten und holt Euch die Buchstaben für Euer Lösungswort ab!",
     "overview.headline.notAllCorrect":
       "Ihr habt leider nicht alle Fragen richtig beantwortet. Schaut in der Übersicht nach, welche Antworten noch nicht stimmen, und korrigiert sie.",
     "overview.notAnswered": "nicht beantwortet",
@@ -109,7 +109,7 @@ const I18N = {
 
     "done.title": "Toll gemacht!",
     "done.text":
-      "Ihr habt alle Fragen richtig. Holt euch bei euren Betreuer:innen Buchstaben ab und findet das Lösungswort!",
+      "Ihr habt alle Fragen richtig. Holt Euch bei Euren Betreuer:innen Buchstaben ab und findet das Lösungswort!",
     "done.toOverview": "Jetzt Buchstaben abholen",
 
     "help.title": "FAQ",
@@ -119,12 +119,12 @@ const I18N = {
     "help.a2": "Geht auf „Antworten“ und klickt bei der Frage auf das Stift-Symbol.",
     "help.q3": "Was passiert am Ende?",
     "help.a3":
-      "Wenn ihr alles richtig habt, bekommt ihr den Abschluss. Sonst seht ihr in der Übersicht, was ihr nochmal prüfen solltet.",
+      "Wenn Ihr alles richtig habt, bekommt Ihr den Abschluss. Sonst seht Ihr in der Übersicht, was Ihr nochmal prüfen solltet.",
     "help.back": "Zurück",
 
     "rate.title": "Gebt uns Feedback",
     "rate.intro":
-      "Wie hat euch der Girls’ Day gefallen? Eure Rückmeldung hilft uns, den Tag noch besser zu machen.",
+      "Wie hat Euch der Girls’ Day gefallen? Eure Rückmeldung hilft uns, den Tag noch besser zu machen.",
     "rate.scaleHint": "1 = trifft gar nicht zu, 5 = trifft voll zu",
     "rate.q.understand": "Ich habe verstanden, was am Institut gemacht wird.",
     "rate.q.fun": "Die Rallye war abwechslungsreich.",

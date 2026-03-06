@@ -10,6 +10,7 @@
 
 /* ===== Tokens ===== */
 :root{
+    color-scheme: light;
   --grad: linear-gradient(to right, #6fc04a 0%, #4fb46a 40%, #009374 100%);
   --green: #009374;
   --text: #111;
@@ -868,6 +869,7 @@ input.input::placeholder{
     font-size: 17px;
     max-width: 36ch;
   }
+
 
 
   .intro-punctuation{
