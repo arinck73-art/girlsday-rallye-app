@@ -110,7 +110,7 @@ const I18N = {
     "done.title": "Toll gemacht!",
     "done.text":
       "Ihr habt alle Fragen richtig. Holt euch bei euren Betreuer:innen Buchstaben ab und findet das Lösungswort!",
-    "done.toOverview": "Zu euren Antworten",
+    "done.toOverview": "Jetzt Buchstaben abholen",
 
     "help.title": "FAQ",
     "help.q1": "Wie funktioniert die Rallye?",
