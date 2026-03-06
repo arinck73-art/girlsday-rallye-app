@@ -1,7 +1,7 @@
 const root = document.getElementById("girlsday-app");
 if (!root) throw new Error('Container "#girlsday-app" nicht gefunden.');
 
-/* ===== PWA Basics (NEU) ===== */
+/* ===== PWA Basics ===== */
 (function registerSW() {
   if (!("serviceWorker" in navigator)) return;
   window.addEventListener("load", () => {
@@ -56,13 +56,11 @@ function t(key, vars = {}) {
 
 const I18N = {
   de: {
-    // Nav
     "nav.home": "Start",
     "nav.overview": "Antworten",
     "nav.help": "Hilfe",
     "nav.rate": "Bewerten",
 
-    // Start
     "start.heroTitle": "Hallo, ich bin<br>Frau N. Hofer!",
     "start.text":
       "Willkommen an unserem Institut! Entdeckt mit mir gemeinsam spannende Stationen rund um Mathematik und Forschung.",
@@ -71,7 +69,13 @@ const I18N = {
     "start.lang.de": "Deutsch",
     "start.lang.en": "English",
 
-    // Install
+    "intro.title": "So funktioniert’s",
+    "intro.text1":
+      "Auf Eurer Reise durch das Institut bekommt Ihr viele spannende Informationen. Wenn Ihr genau hinhört, erhaltet Ihr auch die Antworten auf unsere Rallye-Fragen an den einzelnen Stationen!",
+    "intro.text2":
+      "Für jede richtige Antwort erhältst Du zwei Buchstaben von den Betreuer:innen, die am Ende dann zu einem Lösungswort führen.",
+    "intro.cta": "Weiter",
+
     "install.title": "App zum Homescreen hinzufügen",
     "install.text": "Für das beste Erlebnis empfehlen wir diese Installation.",
     "install.tab.ios": "iPhone",
@@ -79,11 +83,10 @@ const I18N = {
     "install.step.share": "Tippe unten auf „Teilen“",
     "install.step.addHome": "Wähle „Zum Home-Bildschirm“",
     "install.step.add": "Tippe auf „Hinzufügen“",
-    "install.continue": "Weiter zur Rallye",
+    "install.continueDone": "Zum Homescreen hinzugefügt",
     "install.skip": "Ohne Installation fortfahren",
     "install.androidAlt": "Android Installation",
 
-    // Quiz
     "quiz.progress": "Frage {current} von {total}",
     "quiz.questionTitle": "Frage {n}",
     "quiz.optionsAria": "Antwortmöglichkeiten",
@@ -92,11 +95,9 @@ const I18N = {
     "quiz.done": "Fertig",
     "quiz.saved": "Gespeichert.",
 
-    // Notice
     "notice.notAllCorrect":
       "Ihr habt leider nicht alle Fragen richtig beantwortet. Schaut in der Übersicht nach, welche Antworten noch nicht stimmen, und korrigiert sie.",
 
-    // Overview
     "overview.headline.allCorrect":
       "Zeigt eure richtigen Antworten und holt euch die Buchstaben für euer Lösungswort ab!",
     "overview.headline.notAllCorrect":
@@ -106,13 +107,11 @@ const I18N = {
     "overview.wrong": "falsch",
     "overview.editAria": "Antwort zu Frage {n} bearbeiten",
 
-    // Done
     "done.title": "Toll gemacht!",
     "done.text":
       "Ihr habt alle Fragen richtig. Holt euch bei euren Betreuer:innen Buchstaben ab und findet das Lösungswort!",
     "done.toOverview": "Zu euren Antworten",
 
-    // Help
     "help.title": "FAQ",
     "help.q1": "Wie funktioniert die Rallye?",
     "help.a1": "Ihr beantwortet die Fragen gemeinsam. Eure Auswahl wird automatisch gespeichert.",
@@ -120,10 +119,9 @@ const I18N = {
     "help.a2": "Geht auf „Antworten“ und klickt bei der Frage auf das Stift-Symbol.",
     "help.q3": "Was passiert am Ende?",
     "help.a3":
-      "Wenn ihr alles richtig habt, bekommt ihr den Abschluss. Sonst seht ihr in der Übersicht, was ihr nochmal prüfen solltet.",
+      "Wenn Ihr alles richtig habt, bekommt Ihr den Abschluss. Sonst seht Ihr in der Übersicht, was Ihr nochmal prüfen solltet.",
     "help.back": "Zurück",
 
-    // Rate
     "rate.title": "Gebt uns Feedback",
     "rate.intro":
       "Wie hat euch der Girls’ Day gefallen? Eure Rückmeldung hilft uns, den Tag noch besser zu machen.",
@@ -136,20 +134,17 @@ const I18N = {
     "rate.textPlaceholder": "Kurz euer Feedback...",
     "rate.submit": "Feedback abschicken",
 
-    // Thanks
     "thanks.title": "Danke für euer Feedback!",
     "thanks.text": "Eure Rückmeldung hilft uns, den Girls’ Day weiter zu verbessern.",
     "thanks.backHome": "Zur Startseite",
   },
 
   en: {
-    // Nav
     "nav.home": "Home",
     "nav.overview": "Answers",
     "nav.help": "Help",
     "nav.rate": "Rate",
 
-    // Start
     "start.heroTitle": "Hi, I’m<br>Ms N. Hofer!",
     "start.text":
       "Welcome to our institute! Explore exciting stations about mathematics and research together with me.",
@@ -158,7 +153,13 @@ const I18N = {
     "start.lang.de": "Deutsch",
     "start.lang.en": "English",
 
-    // Install
+    "intro.title": "How it works",
+    "intro.text1":
+      "During your journey through the institute, you will receive lots of exciting information. If you listen carefully, you will also get the answers to our rally questions at the individual stations!",
+    "intro.text2":
+      "For each correct answer, you receive two letters that will form the final solution word.",
+    "intro.cta": "Continue",
+
     "install.title": "Add the app to your Home Screen",
     "install.text": "For the best experience, we recommend installing the app.",
     "install.tab.ios": "iPhone",
@@ -166,11 +167,10 @@ const I18N = {
     "install.step.share": 'Tap "Share" at the bottom',
     "install.step.addHome": 'Choose "Add to Home Screen"',
     "install.step.add": 'Tap "Add"',
-    "install.continue": "Continue to the rally",
+    "install.continueDone": "Added to Home Screen",
     "install.skip": "Continue without installing",
     "install.androidAlt": "Android installation",
 
-    // Quiz
     "quiz.progress": "Question {current} of {total}",
     "quiz.questionTitle": "Question {n}",
     "quiz.optionsAria": "Answer options",
@@ -179,11 +179,9 @@ const I18N = {
     "quiz.done": "Finish",
     "quiz.saved": "Saved.",
 
-    // Notice
     "notice.notAllCorrect":
       "Not all answers are correct yet. Check the overview to see which ones are wrong and correct them.",
 
-    // Overview
     "overview.headline.allCorrect":
       "Show your correct answers and collect the letters for your solution word!",
     "overview.headline.notAllCorrect":
@@ -193,13 +191,11 @@ const I18N = {
     "overview.wrong": "wrong",
     "overview.editAria": "Edit answer for question {n}",
 
-    // Done
     "done.title": "Well done!",
     "done.text":
       "You answered everything correctly. Collect letters from your supervisors and find the solution word!",
     "done.toOverview": "Go to your answers",
 
-    // Help
     "help.title": "FAQ",
     "help.q1": "How does the rally work?",
     "help.a1": "Answer the questions together. Your selection is saved automatically.",
@@ -210,7 +206,6 @@ const I18N = {
       "If everything is correct, you’ll get the completion screen. Otherwise, the overview shows what you should check again.",
     "help.back": "Back",
 
-    // Rate
     "rate.title": "Give us feedback",
     "rate.intro":
       "How did you like Girls’ Day? Your feedback helps us improve the day.",
@@ -223,14 +218,12 @@ const I18N = {
     "rate.textPlaceholder": "Your feedback...",
     "rate.submit": "Send feedback",
 
-    // Thanks
     "thanks.title": "Thanks for your feedback!",
     "thanks.text": "Your feedback helps us improve Girls’ Day.",
     "thanks.backHome": "Back to home",
   },
 };
 
-/* ===== Quiz (DE/EN) ===== */
 const QUIZ_DE = [
   {
     q: "Wofür steht die Abkürzung in Fraunhofer ITWM?",
@@ -362,17 +355,16 @@ function getQuiz() {
   return getLang() === "en" ? QUIZ_EN : QUIZ_DE;
 }
 
-/* ===== Storage Keys ===== */
 const STORAGE_KEY = "girlsday_answers";
 const RATE_KEY = "girlsday_rating";
 const LAST_KEY = "girlsday_last";
 const NOTICE_KEY = "girlsday_notice";
 
-/* ===== Assets ===== */
 const LOGO_ITWM = "./assets/logos/logo-itwm.svg";
 
 const START_BUILDING = "./assets/img/start/itwm-gebaeude.png";
 const START_HOFER = "./assets/img/start/frau-n-hofer-start.png";
+const INTRO_IMAGE = "./assets/img/start/how-it-works.png";
 
 const INSTALL_ASSETS = {
   hero: "./assets/img/install/install-hero.jpg",
@@ -392,7 +384,6 @@ const ICON_IOS_CHECK = "./assets/icons/Icon_check.svg";
 const SUCCESS_IMAGE = "./assets/img/quiz/success-screen.jpg";
 const HELP_IMAGE = "./assets/img/help/help.png";
 
-/* ===== Storage ===== */
 function loadAnswers() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -422,7 +413,6 @@ function countCorrect() {
   return correct;
 }
 
-/* ===== Notice ===== */
 function setNotice(text) {
   try {
     localStorage.setItem(NOTICE_KEY, String(text || ""));
@@ -439,7 +429,6 @@ function popNotice() {
   }
 }
 
-/* ===== Last State ===== */
 function setLastScreen(payload) {
   try {
     localStorage.setItem(LAST_KEY, JSON.stringify(payload));
@@ -459,6 +448,7 @@ function resumeLast() {
   const last = getLastScreen();
   if (!last) return renderStart();
 
+  if (last.screen === "intro") return renderIntro();
   if (last.screen === "install") return renderInstall(last.platform || "ios");
 
   const QUIZ = getQuiz();
@@ -476,7 +466,6 @@ function resumeLast() {
   return renderStart();
 }
 
-/* ===== UI Helpers ===== */
 function headerHTML() {
   return `
     <div class="header header-start">
@@ -562,7 +551,6 @@ function confettiHTML() {
   return `<div class="confetti" id="confetti"></div>`;
 }
 
-/* ===== Confetti (Done/Thanks) ===== */
 function launchConfetti() {
   const host = document.getElementById("confetti");
   if (!host) return;
@@ -623,7 +611,6 @@ function launchConfetti() {
   }, 4200);
 }
 
-/* ===== Start Motion (nur Start-Hero) ===== */
 function launchStartMotion() {
   const host = document.getElementById("startMotion");
   if (!host) return;
@@ -747,7 +734,6 @@ function launchStartMotion() {
   }
 }
 
-/* ===== Multiple Choice ===== */
 function optionsHTML(index, selectedIndex) {
   const QUIZ = getQuiz();
   const name = `q_${index}`;
@@ -771,7 +757,6 @@ function getPickedOptionIndex(index) {
   return Number.isFinite(n) ? n : null;
 }
 
-/* ===== Rating ===== */
 function scaleRadios(name, selectedValue) {
   const selected = String(selectedValue || "");
   return [1, 2, 3, 4, 5]
@@ -791,16 +776,11 @@ function getCheckedValue(name) {
   return el ? el.value : "";
 }
 
-/* ===== Screens ===== */
 function renderStart() {
   setLastScreen({ screen: "home" });
 
   const lang = getLang();
   const isEN = lang === "en";
-
-  // Button-Reset ohne neue CSS (unverändert, auch wenn ungenutzt)
-  const langBtnStyle =
-    "appearance:none;border:0;background:transparent;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;";
 
   root.innerHTML = `
     <div class="screen screen--start">
@@ -820,7 +800,6 @@ function renderStart() {
 
         <button class="btn start-cta" id="startBtn" type="button">${escapeHtml(t("start.cta"))}</button>
 
-        <!-- Sprachwahl: dezent, unter dem Button -->
         <div class="install-skip" aria-label="${escapeHtml(t("start.lang.label"))}" style="padding-top:10px;">
           <span style="margin-right:6px;">${escapeHtml(t("start.lang.label"))}</span>
           <button
@@ -849,21 +828,56 @@ function renderStart() {
     </div>
   `;
 
-  document.querySelectorAll('[data-lang]').forEach((btn) => {
+  document.querySelectorAll("[data-lang]").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       setLang(e.currentTarget.dataset.lang);
       renderStart();
     });
   });
 
-  // NEU: installiert -> direkt Rallye; sonst Install je nach Plattform
   document.getElementById("startBtn")?.addEventListener("click", () => {
+    renderIntro();
+  });
+
+  bindNav();
+  launchStartMotion();
+}
+
+function renderIntro() {
+  setLastScreen({ screen: "intro" });
+
+  root.innerHTML = `
+    <div class="screen">
+      ${headerHTML()}
+
+      <div class="content intro-content">
+        <img class="intro-hero" src="${INTRO_IMAGE}" alt="" />
+
+        <h2 class="intro-title">${escapeHtml(t("intro.title"))}</h2>
+
+        <p class="intro-text">
+          ${escapeHtml(t("intro.text1"))}
+        </p>
+
+        <p class="intro-text">
+          ${escapeHtml(t("intro.text2"))}
+        </p>
+
+        <button class="btn intro-btn" id="introNextBtn" type="button">
+          ${escapeHtml(t("intro.cta"))}
+        </button>
+      </div>
+
+      ${navHTML("")}
+    </div>
+  `;
+
+  document.getElementById("introNextBtn")?.addEventListener("click", () => {
     if (isStandalone()) return renderQuestion(0);
     return renderInstall(detectPlatform());
   });
 
   bindNav();
-  launchStartMotion();
 }
 
 function renderInstall(platform = "ios") {
@@ -917,7 +931,9 @@ function renderInstall(platform = "ios") {
             `
         }
 
-        <button class="btn" id="installContinueBtn" type="button">${escapeHtml(t("install.continue"))}</button>
+        <button class="btn btn-installed" id="installContinueBtn" type="button">
+          ${escapeHtml(t("install.continueDone"))} ✓
+        </button>
 
         <p class="install-skip" id="installSkipBtn" role="button" tabindex="0">
           ${escapeHtml(t("install.skip"))}
@@ -947,13 +963,10 @@ function renderQuestion(index) {
   setLastScreen({ screen: "question", index });
 
   const QUIZ = getQuiz();
-
   const answers = loadAnswers();
   const selected = typeof answers[String(index)] === "number" ? answers[String(index)] : null;
-
   const isLast = index === QUIZ.length - 1;
   const nextLabel = isLast ? t("quiz.done") : t("quiz.next");
-
   const imgSrc = QUIZ[index].img;
 
   root.innerHTML = `
@@ -1022,13 +1035,10 @@ function renderOverview() {
   setLastScreen({ screen: "overview" });
 
   const QUIZ = getQuiz();
-
   const correct = countCorrect();
   const total = QUIZ.length;
   const allCorrect = correct === total;
-
   const headline = allCorrect ? t("overview.headline.allCorrect") : t("overview.headline.notAllCorrect");
-
   const answers = loadAnswers();
   let list = "";
 
@@ -1040,7 +1050,6 @@ function renderOverview() {
     const statusSymbol = !has ? "–" : isCorrect ? "✓" : "✕";
     const statusClass = !has ? "is-empty" : isCorrect ? "is-correct" : "is-wrong";
     const answerClass = !has ? "" : isCorrect ? "is-correct" : "is-wrong";
-
     const pickedText = has ? item.options[picked] : "";
 
     list += `
@@ -1130,24 +1139,24 @@ function renderHelp(returnTo = null) {
     <div class="screen">
       ${headerHTML()}
 
-    <div class="content">
-      <h2>${escapeHtml(t("help.title"))}</h2>
+      <div class="content">
+        <h2>${escapeHtml(t("help.title"))}</h2>
 
-      <img class="help-hero" src="${HELP_IMAGE}" alt="" />
+        <img class="help-hero" src="${HELP_IMAGE}" alt="" />
 
-      <div class="faq">
-        <h3>${escapeHtml(t("help.q1"))}</h3>
-        <p>${escapeHtml(t("help.a1"))}</p>
+        <div class="faq">
+          <h3>${escapeHtml(t("help.q1"))}</h3>
+          <p>${escapeHtml(t("help.a1"))}</p>
 
-        <h3>${escapeHtml(t("help.q2"))}</h3>
-        <p>${escapeHtml(t("help.a2"))}</p>
+          <h3>${escapeHtml(t("help.q2"))}</h3>
+          <p>${escapeHtml(t("help.a2"))}</p>
 
-        <h3>${escapeHtml(t("help.q3"))}</h3>
-        <p>${escapeHtml(t("help.a3"))}</p>
+          <h3>${escapeHtml(t("help.q3"))}</h3>
+          <p>${escapeHtml(t("help.a3"))}</p>
+        </div>
+
+        <button class="btn" id="backToRallyBtn" type="button">${escapeHtml(t("help.back"))}</button>
       </div>
-
-      <button class="btn" id="backToRallyBtn" type="button">${escapeHtml(t("help.back"))}</button>
-    </div>
 
       ${navHTML("help")}
     </div>
@@ -1158,6 +1167,7 @@ function renderHelp(returnTo = null) {
     const target = last?.returnTo;
 
     if (!target) return renderStart();
+    if (target.screen === "intro") return renderIntro();
     if (target.screen === "install") return renderInstall(target.platform || "ios");
     if (target.screen === "question") return renderQuestion(target.index ?? 0);
     if (target.screen === "overview") return renderOverview();
@@ -1267,10 +1277,8 @@ function renderThanks() {
   launchConfetti();
 }
 
-/* ===== Start ===== */
 resumeLast();
 
-// ===== PWA: Service Worker Registration =====
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker

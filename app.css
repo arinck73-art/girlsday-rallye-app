@@ -1,7 +1,7 @@
 /* =========================================================
-   app.css — clean, stabil, light überall
+   app.css â€” clean, stabil, light Ã¼berall
    - Global: h1/h2 light (100)
-   - Start: Hero-Layout stabil (Headline im Hero, Text links bündig)
+   - Start: Hero-Layout stabil (Headline im Hero, Text links bÃ¼ndig)
    - Quiz: Scroll/Buttons stabil
    - Install/Overview/Rate/Done/Thanks: Styles enthalten
    - Bottom-Nav + Safe-Area
@@ -72,7 +72,7 @@ body{
   padding: 24px 20px calc(var(--nav-h) + env(safe-area-inset-bottom) + 12px);
 }
 
-/* GLOBAL TYPO: überall light */
+/* GLOBAL TYPO: Ã¼berall light */
 h1, h2{
   font-weight: 100;
   margin: 0 0 10px;
@@ -282,6 +282,113 @@ input.input::placeholder{
 }
 
 .start-cta{ margin-top: 22px; }
+
+
+/* =========================================================
+   INTRO / SO FUNKTIONIERTâ€™S
+   ========================================================= */
+.intro-content{
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - 56px - var(--nav-h) - env(safe-area-inset-bottom));
+}
+
+
+.intro-blob{
+  position: absolute;
+  border-radius: 999px;
+  opacity: 0.9;
+}
+
+.intro-blob--left{
+  left: 0;
+  top: 56px;
+  width: 180px;
+  height: 140px;
+  background: #f4eedc;
+}
+
+.intro-blob--right{
+  right: 0;
+  top: 14px;
+  width: 250px;
+  height: 210px;
+  background: #e8f1f4;
+}
+
+.intro-punctuation{
+  position: absolute;
+  left: 28px;
+  top: 38px;
+  z-index: 2;
+  font-size: clamp(88px, 18vw, 132px);
+  line-height: 0.9;
+  letter-spacing: -6px;
+  font-weight: 300;
+  color: rgba(17,17,17,0.72);
+}
+
+.intro-figure{
+  position: absolute;
+  right: 34px;
+  bottom: 0;
+  z-index: 3;
+  width: clamp(190px, 48%, 260px);
+  height: auto;
+}
+
+.intro-title{
+  font-size: 24px;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.intro-text{
+  max-width: 32ch;
+  font-size: 18px;
+  line-height: 1.35;
+  margin-bottom: 18px;
+}
+
+.intro-cta{
+  margin-top: auto;
+}
+
+
+/* =========================================================
+   INTRO / SO FUNKTIONIERT'S
+   ========================================================= */
+.intro-content{
+  padding-top: 18px;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - 56px - var(--nav-h));
+}
+
+.intro-hero{
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 8px 0 18px;
+}
+
+.intro-title{
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+
+.intro-text{
+  font-size: 15px;
+  line-height: 1.45;
+  margin: 0 0 20px;
+  max-width: 100%;
+}
+
+.intro-btn{
+  margin-top: auto;
+}
+
 
 /* =========================================================
    QUIZ (Multiple Choice)
@@ -761,6 +868,22 @@ input.input::placeholder{
     font-size: 17px;
     max-width: 36ch;
   }
+
+
+  .intro-punctuation{
+    left: 14px;
+    top: 32px;
+    font-size: clamp(72px, 22vw, 104px);
+  }
+
+  .intro-figure{
+    right: 10px;
+    width: clamp(170px, 50%, 220px);
+  }
+
+  .intro-text{
+    font-size: 16px;
+  }
 }
 
 /* Respect reduced motion */
@@ -776,4 +899,35 @@ input.input::placeholder{
     box-shadow: none;
   }
   .bottom-nav{ width: 100%; }
+}
+
+.install-confirm-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.install-confirm-icon{
+  font-size: 28px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.btn-installed{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 56px;
+  border: none;
+  border-radius: 8px;
+  background: var(--grad);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 24px;
 }
