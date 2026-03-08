@@ -119,7 +119,7 @@ const I18N = {
     "help.a2": "Geht auf „Antworten“ und klickt bei der Frage auf das Stift-Symbol, dann werdet Ihr nacheinander zu den falsch beantworteten Fragen geleitet, die Ihr korrigeren könnt.",
     "help.q3": "Was passiert am Ende?",
     "help.a3":
-      "Wenn Ihr alles richtig habt, bekommt Ihr Buchstaben, mit denen ihr das Lösungswort findet. Unter dem Menüpunkt „Antworten“ seht ihr, was Ihr nochmal prüfen solltet.",
+      "Wenn Ihr alles richtig habt, bekommt Ihr Buchstaben, mit denen ihr das Lösungswort findet. Unter dem Menüpunkt Antworten seht ihr, was Ihr nochmal prüfen solltet.",
     "help.back": "Zurück",
 
     "rate.title": "Gebt uns Feedback",
