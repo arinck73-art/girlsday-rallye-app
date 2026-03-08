@@ -116,7 +116,7 @@ const I18N = {
     "help.q1": "Wie funktioniert die Rallye?",
     "help.a1": "Ihr beantwortet die Fragen gemeinsam. Eure Auswahl wird automatisch gespeichert.",
     "help.q2": "Wie bearbeiten wir Antworten?",
-    "help.a2": "Geht auf „Antworten“ und klickt bei der Frage auf das Stift-Symbol. Dann kommen nacheinander die falsch beantworteten Fragen, die Ihr korrigeren könnt.",
+    "help.a2": "Geht auf „Antworten“ und klickt bei der Frage auf das Stift-Symbol, dann werdet Ihr nacheinander zu den falsch beantworteten Fragen geleitet, die Ihr korrigeren könnt.",
     "help.q3": "Was passiert am Ende?",
     "help.a3":
       "Wenn Ihr alles richtig habt, bekommt Ihr den Abschluss. Sonst seht Ihr in der Übersicht, was Ihr nochmal prüfen solltet.",
