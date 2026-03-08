@@ -1188,7 +1188,6 @@ function renderHelp(returnTo = null) {
       ${headerHTML()}
 
       <div class="content">
-        //<h2>${escapeHtml(t("help.title"))}</h2>
 
         <img class="help-hero" src="${HELP_IMAGE}" alt="" />
 
