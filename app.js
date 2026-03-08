@@ -196,6 +196,7 @@ const I18N = {
       "You answered everything correctly. Collect letters from your supervisors and find the solution word!",
     "done.toOverview": "Go to your answers",
 
+    "help.title": "FAQ",
     "help.q1": "How does the rally work?",
     "help.a1": "Answer the questions together. Your selection is saved automatically.",
     "help.q2": "How can we edit answers?",
@@ -1187,7 +1188,6 @@ function renderHelp(returnTo = null) {
       ${headerHTML()}
 
       <div class="content">
-        <h2>${escapeHtml(t("help.title"))}</h2>
 
         <img class="help-hero" src="${HELP_IMAGE}" alt="" />
 
