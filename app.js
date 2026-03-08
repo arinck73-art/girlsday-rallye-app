@@ -109,7 +109,7 @@ const I18N = {
 
     "done.title": "Toll gemacht!",
     "done.text":
-      "Ihr habt alle Fragen richtig. Holt Euch bei Euren Betreuer:innen Buchstaben ab und findet das Lösungswort!",
+      "Ihr habt alle Fragen richtig. Holt Euch bei Euren Betreuer:innen Buchstaben ab und findet das Lösungswort! Mit der richtigen Lösung bekommt Ihr auch eine kleine Belohnung.",
     "done.toOverview": "Jetzt Buchstaben abholen",
 
     "help.title": "FAQ",
@@ -262,7 +262,7 @@ const QUIZ_DE = [
     correct: 1,
   },
   {
-    q: "Welche Technik wird auch für Gesichtserkennung von Handys genutzt? Tipp: Unsere Abteilung BV ist danach benannt.",
+    q: "Welche Technik wird auch für Gesichtserkennung von Handys genutzt?",
     img: "./assets/img/quiz/q6_bv.png",
     options: ["Mustererkennung", "Signalverarbeitung", "Bildverarbeitung", "Datenanalyse"],
     correct: 2,
@@ -323,7 +323,7 @@ const QUIZ_EN = [
     correct: 1,
   },
   {
-    q: "Which technology is also used for phone face recognition? Tip: our department BV is named after it.",
+    q: "Which technology is also used for phone face recognition?",
     img: "./assets/img/quiz/q6_bv.png",
     options: ["Pattern recognition", "Signal processing", "Image processing", "Data analysis"],
     correct: 2,
