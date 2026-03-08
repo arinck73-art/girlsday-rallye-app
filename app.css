@@ -519,7 +519,7 @@ input.input::placeholder{
    OVERVIEW
    ========================================================= */
 .overview-title{
-  font-size: 18px;
+  font-size: 18px;important: !important;
   line-height: 1.4;
   margin: 0 0 12px;
 }
