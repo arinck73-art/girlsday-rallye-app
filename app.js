@@ -2,12 +2,13 @@ const root = document.getElementById("girlsday-app");
 if (!root) throw new Error('Container "#girlsday-app" nicht gefunden.');
 
 /* ===== PWA Basics ===== */
-(function registerSW() {
-  if (!("serviceWorker" in navigator)) return;
+if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/service-worker.js").catch(() => {});
+    navigator.serviceWorker
+      .register("./service-worker.js")
+      .catch((err) => console.warn("Service Worker registration failed:", err));
   });
-})();
+}
 
 function detectPlatform() {
   const ua = navigator.userAgent || "";
@@ -96,9 +97,6 @@ const I18N = {
     "quiz.done": "Fertig",
     "quiz.saved": "Gespeichert.",
 
-    "notice.notAllCorrect":
-      "Ihr habt leider nicht alle Fragen richtig beantwortet. Schaut in der Übersicht nach, welche Antworten noch nicht stimmen, und korrigiert sie.",
-
     "overview.headline.allCorrect":
       "Alle Antworten sind richtig. Jetzt könnt Ihr über die Schlösser Eure Buchstaben freischalten.",
     "overview.headline.notAllCorrect":
@@ -125,8 +123,7 @@ const I18N = {
       "Zieht die freigeschalteten Buchstaben in die Felder und setzt das Lösungswort zusammen.",
     "board.empty":
       "Ihr habt noch keine Buchstaben freigeschaltet. Geht zuerst auf „Antworten“ und öffnet die Schlösser.",
-    "board.hint":
-      "Zieht die Buchstaben in die leeren Felder.",
+    "board.hint": "Zieht die Buchstaben in die leeren Felder.",
     "board.poolTitle": "Buchstaben",
     "board.check": "Wort prüfen",
     "board.successTitle": "Geschafft!",
@@ -207,9 +204,6 @@ const I18N = {
     "quiz.done": "Finish",
     "quiz.saved": "Saved.",
 
-    "notice.notAllCorrect":
-      "Not all answers are correct yet. Check the overview to see which ones are wrong and correct them.",
-
     "overview.headline.allCorrect":
       "All answers are correct. Now you can unlock your letters via the locks.",
     "overview.headline.notAllCorrect":
@@ -236,8 +230,7 @@ const I18N = {
       "Drag the unlocked letters into the fields and build the solution word.",
     "board.empty":
       "You have not unlocked any letters yet. Go to “Answers” first and open the locks.",
-    "board.hint":
-      "Drag the letters into the empty fields.",
+    "board.hint": "Drag the letters into the empty fields.",
     "board.poolTitle": "Letters",
     "board.check": "Check word",
     "board.successTitle": "Done!",
@@ -419,7 +412,6 @@ function getQuiz() {
 const STORAGE_KEY = "girlsday_answers";
 const RATE_KEY = "girlsday_rating";
 const LAST_KEY = "girlsday_last";
-const NOTICE_KEY = "girlsday_notice";
 const LETTERS_KEY = "girlsday_letters";
 const BOARD_SLOTS_KEY = "girlsday_board_slots";
 
@@ -467,14 +459,14 @@ const LETTERS = [
 ];
 
 const LETTER_REWARDS = [
-  ["l0", "l1"], // A L
-  ["l2"],       // G
-  ["l3"],       // O
-  ["l4", "l5"], // R I
-  ["l6"],       // T
-  ["l7"],       // H
-  ["l8"],       // M
-  ["l9", "l10"] // U S
+  ["l0", "l1"],
+  ["l2"],
+  ["l3"],
+  ["l4", "l5"],
+  ["l6"],
+  ["l7"],
+  ["l8"],
+  ["l9", "l10"],
 ];
 
 const LETTER_POOL_ORDER = ["l4", "l2", "l9", "l0", "l7", "l10", "l3", "l6", "l1", "l8", "l5"];
@@ -688,23 +680,6 @@ function removeLetterFromSlot(letterId) {
   if (previousSlot !== -1) {
     slots[previousSlot] = null;
     saveBoardSlots(slots);
-  }
-}
-
-/* ===== Notice ===== */
-function setNotice(text) {
-  try {
-    localStorage.setItem(NOTICE_KEY, String(text || ""));
-  } catch {}
-}
-
-function popNotice() {
-  try {
-    const raw = localStorage.getItem(NOTICE_KEY);
-    localStorage.removeItem(NOTICE_KEY);
-    return raw || "";
-  } catch {
-    return "";
   }
 }
 
@@ -1418,7 +1393,6 @@ function renderQuestion(index, fromOverview = false) {
 
     if (correct === total) return renderDone();
 
-    setNotice(t("notice.notAllCorrect"));
     return renderOverview();
   });
 
@@ -1434,7 +1408,6 @@ function renderOverview() {
   const allCorrect = correct === total;
   const headline = allCorrect ? t("overview.headline.allCorrect") : t("overview.headline.notAllCorrect");
   const answers = loadAnswers();
-  const notice = popNotice();
 
   let list = "";
 
@@ -1504,7 +1477,6 @@ function renderOverview() {
       ${unlockOverlayHTML("")}
 
       <div class="content">
-        ${notice ? `<div class="overview-notice">${escapeHtml(notice)}</div>` : ""}
         <h2 class="overview-title">${escapeHtml(headline)}</h2>
         ${list}
       </div>
@@ -1764,7 +1736,6 @@ function renderBoard(message = "") {
 }
 
 function renderBoardSuccess() {
-
   root.innerHTML = `
     <div class="screen">
       ${confettiHTML()}
@@ -2104,12 +2075,3 @@ function renderThanks() {
 
 /* ===== Start ===== */
 resumeLast();
-
-/* ===== PWA: Service Worker Registration ===== */
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("/service-worker.js")
-      .catch((err) => console.warn("Service Worker registration failed:", err));
-  });
-}
