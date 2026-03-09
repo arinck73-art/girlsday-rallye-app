@@ -1,15 +1,14 @@
 const CACHE_NAME = "girlsday-v1";
 
 const APP_SHELL = [
-  "/",
-  "/index.html",
-  "/app.css",
-  "/app.js",
-  "/manifest.webmanifest",
-  "/favicon/favicon_32px.png",
-  "/favicon/favicon_180px.png",
-  "/favicon/favicon_192px.png",
-  "/favicon/favicon_512px.png"
+  "index.html",
+  "app.css",
+  "app.js",
+  "manifest.webmanifest",
+  "favicon/favicon_32px.png",
+  "favicon/favicon_180px.png",
+  "favicon/favicon_192px.png",
+  "favicon/favicon_512px.png"
 ];
 
 self.addEventListener("install", (event) => {
