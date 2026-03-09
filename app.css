@@ -611,7 +611,6 @@ input.input::placeholder{
 .lockIconBtn.is-unlocked{
   background: rgba(0,147,116,0.10);
   border-color: rgba(0,147,116,0.52);
-  opacity: 1;
 }
 
 .overview-unlock-state{
@@ -1229,9 +1228,8 @@ input.input::placeholder{
 }
 
 /* =========================================================
-   UNLOCK NOTICE
+   OPTIONAL UNLOCK NOTICE
    ========================================================= */
-
 .unlock-notice{
   position: fixed;
   left: 50%;
@@ -1258,11 +1256,6 @@ input.input::placeholder{
   opacity: 1;
   transform: translate(-50%,0);
 }
-
-.lockIconBtn.is-unlocked{
-  opacity: 0.6;
-}
-
 
 /* =========================================================
    MEDIA QUERIES
@@ -1302,13 +1295,6 @@ input.input::placeholder{
     padding: 16px;
   }
 
-  .board-tile{
-    min-width: 56px;
-    min-height: 48px;
-    font-size: 20px;
-    padding: 10px 12px;
-  }
-
   .nav-label{
     font-size: 10px;
   }
@@ -1326,7 +1312,6 @@ input.input::placeholder{
   .confetti-piece,
   .unlock-overlay,
   .unlock-overlay-card,
-  .board-tile,
   .letter-flyer,
   .unlock-letters--burst,
   .nav-item--target .nav-icon-img,
