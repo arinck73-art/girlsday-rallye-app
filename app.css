@@ -1188,6 +1188,14 @@ input.input::placeholder{
   border-radius: 10px;
 }
 
+.nav-item.active .nav-label{
+  color: #009374;
+}
+
+.nav-item.active .nav-icon-img{
+  filter: invert(39%) sepia(89%) saturate(520%) hue-rotate(133deg) brightness(90%) contrast(90%);
+}
+
 .nav-icon-img{
   width: 22px;
   height: 22px;
