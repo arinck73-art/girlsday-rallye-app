@@ -763,7 +763,7 @@ input.input::placeholder{
 .board-visual{
   position: relative;
   width: 100%;
-  min-height: 320px;
+  min-height: 190px;
   border-radius: 12px;
   overflow: hidden;
   background-color: #d9f0e8;
@@ -771,12 +771,57 @@ input.input::placeholder{
   background-repeat: no-repeat;
   background-size: contain;
   margin: 10px 0 14px;
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.03);
+}
+
+/* Ablage unten */
+.board-visual::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22px;
+  background: rgba(0,0,0,0.04);
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Kreide + Schwamm in Graustufen */
+.board-surface::before{
+  content: "";
+  position: absolute;
+  left: 16px;
+  bottom: 8px;
+  width: 58px;
+  height: 18px;
+  border-radius: 4px;
+  background: linear-gradient(to bottom, #f4f4f4, #dddddd);
+  box-shadow:
+    0 1px 2px rgba(0,0,0,0.12),
+    170px 2px 0 -6px #f4f4f4,
+    198px 0px 0 -6px #eaeaea,
+    226px 1px 0 -6px #f8f8f8;
+  z-index: 3;
+}
+
+/* kleine Schatten unter Schwamm/Kreide */
+.board-surface::after{
+  content: "";
+  position: absolute;
+  left: 18px;
+  bottom: 4px;
+  width: 180px;
+  height: 8px;
+  background: rgba(0,0,0,0.08);
+  filter: blur(4px);
+  border-radius: 999px;
+  z-index: 2;
 }
 
 .board-surface{
   position: relative;
-  min-height: 320px;
-  padding: 22px 18px 16px;
+  min-height: 220px;
+  padding: 18px 18px 40px;
   background: linear-gradient(to bottom, rgba(255,255,255,0.16), rgba(255,255,255,0.04));
   display: flex;
   flex-direction: column;
@@ -786,7 +831,7 @@ input.input::placeholder{
 .board-slot-grid{
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
   width: 100%;
 }
 
@@ -806,9 +851,9 @@ input.input::placeholder{
 
 .board-slot{
   min-height: 54px;
-  border: 2px dashed rgba(0,147,116,0.28);
+  border: 2px dashed rgba(0,147,116,0.20);
   border-radius: 14px;
-  background: rgba(255,255,255,0.52);
+  background: rgba(255,255,255,0.38);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -817,20 +862,20 @@ input.input::placeholder{
 
 .board-slot.has-letter{
   border-style: solid;
-  border-color: rgba(0,147,116,0.42);
-  background: rgba(255,255,255,0.76);
+  border-color: rgba(0,147,116,0.36);
+  background: rgba(255,255,255,0.68);
 }
 
 .board-slot.is-over{
-  border-color: rgba(0,147,116,0.72);
+  border-color: rgba(0,147,116,0.62);
   box-shadow: 0 0 0 3px var(--green-ring);
-  background: rgba(255,255,255,0.86);
+  background: rgba(255,255,255,0.82);
 }
 
 .board-slot-placeholder{
   font-size: 24px;
   line-height: 1;
-  color: rgba(0,147,116,0.34);
+  color: rgba(0,147,116,0.28);
 }
 
 .board-hint{
@@ -1138,7 +1183,9 @@ input.input::placeholder{
 }
 
 .nav-item.active{
-  font-weight: 600;
+  font-weight: 700;
+  background: rgba(0,147,116,0.12);
+  border-radius: 10px;
 }
 
 .nav-icon-img{
@@ -1292,8 +1339,8 @@ input.input::placeholder{
   }
 
   .board-surface{
-    min-height: 260px;
-    padding: 16px;
+    min-height: 190px;
+    padding: 14px 14px 34px;
   }
 
   .nav-label{
