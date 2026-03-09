@@ -58,6 +58,7 @@ const I18N = {
   de: {
     "nav.home": "Start",
     "nav.overview": "Antworten",
+    "nav.board": "Tafel",
     "nav.help": "Hilfe",
     "nav.rate": "Bewerten",
 
@@ -71,9 +72,9 @@ const I18N = {
 
     "intro.title": "So funktioniert’s",
     "intro.text1":
-      "Auf Eurer Reise durch das Institut bekommt Ihr viele spannende Informationen. Wenn Ihr genau hinhört, erhaltet Ihr auch die Antworten auf unsere Rallye-Fragen an den einzelnen Stationen!",
+      "Auf Eurer Reise durch das Institut bekommt Ihr viele spannende Informationen. Wenn Ihr genau hinhört, erhaltet Ihr auch die Antworten auf unsere Rallye-Fragen an den einzelnen Stationen.",
     "intro.text2":
-      "Für jede richtige Antwort erhältst Du zwei Buchstaben, die am Ende dann zu einem Lösungswort führen.",
+      "Wenn alle Fragen richtig beantwortet sind, könnt Ihr Buchstaben freischalten und daraus ein Lösungswort zusammensetzen.",
     "intro.cta": "Weiter",
 
     "install.title": "App zum Homescreen hinzufügen",
@@ -99,27 +100,53 @@ const I18N = {
       "Ihr habt leider nicht alle Fragen richtig beantwortet. Schaut in der Übersicht nach, welche Antworten noch nicht stimmen, und korrigiert sie.",
 
     "overview.headline.allCorrect":
-      "Zeigt Eure richtigen Antworten und holt Euch die Buchstaben für Euer Lösungswort ab!",
+      "Alle Antworten sind richtig. Jetzt könnt Ihr über die Schlösser Eure Buchstaben freischalten.",
     "overview.headline.notAllCorrect":
       "Ihr habt leider nicht alle Fragen richtig beantwortet. Schaut in der Übersicht nach, welche Antworten noch nicht stimmen, und korrigiert sie.",
     "overview.notAnswered": "nicht beantwortet",
     "overview.correct": "richtig",
     "overview.wrong": "falsch",
     "overview.editAria": "Antwort zu Frage {n} bearbeiten",
+    "overview.unlockAria": "Buchstaben zu Frage {n} freischalten",
+    "overview.unlocked": "freigeschaltet",
+    "overview.locked": "noch geschlossen",
+
+    "unlock.title": "Buchstaben freigeschaltet",
+    "unlock.alreadyTitle": "Hinweis",
+    "unlock.alreadyText": "Diese Buchstaben habt Ihr bereits freigeschaltet.",
 
     "done.title": "Toll gemacht!",
     "done.text":
-      "Ihr habt alle Fragen richtig. Holt Euch bei Euren Betreuer:innen Buchstaben ab und findet das Lösungswort! Mit der richtigen Lösung bekommt Ihr auch eine kleine Belohnung.",
-    "done.toOverview": "Jetzt Buchstaben abholen",
+      "Ihr habt alle Fragen richtig beantwortet. Geht jetzt auf „Antworten“ und öffnet die Schlösser, um Eure Buchstaben freizuschalten.",
+    "done.toOverview": "Jetzt Buchstaben holen",
+
+    "board.title": "Tafel",
+    "board.intro":
+      "Zieht die freigeschalteten Buchstaben in die Felder und setzt das Lösungswort zusammen.",
+    "board.empty":
+      "Ihr habt noch keine Buchstaben freigeschaltet. Geht zuerst auf „Antworten“ und öffnet die Schlösser.",
+    "board.hint":
+      "Zieht die Buchstaben in die leeren Felder.",
+    "board.poolTitle": "Buchstaben",
+    "board.check": "Wort prüfen",
+    "board.successTitle": "Geschafft!",
+    "board.successText":
+      "Ihr habt das Lösungswort gefunden: ALGORITHMUS. Jetzt könnt Ihr Eure Buchstaben bei den Betreuer:innen abholen.",
+    "board.incomplete":
+      "Es sind noch nicht alle Buchstaben freigeschaltet.",
+    "board.tryAgain":
+      "Das ist noch nicht richtig. Ordnet die Buchstaben neu.",
+    "board.slotAria": "Feld {n}",
 
     "help.title": "FAQ",
     "help.q1": "Wie funktioniert die Rallye?",
     "help.a1": "Ihr beantwortet die Fragen gemeinsam. Eure Auswahl wird automatisch gespeichert.",
     "help.q2": "Wie bearbeiten wir Antworten?",
-    "help.a2": "Geht auf „Antworten“ und klickt bei der Frage auf das Stift-Symbol, dann werdet Ihr nacheinander zu den falsch beantworteten Fragen geleitet, die Ihr korrigeren könnt.",
+    "help.a2":
+      "Geht auf „Antworten“ und klickt bei einer Frage auf das Stift-Symbol. Wenn alle Fragen richtig sind, erscheint dort ein Schloss zum Freischalten der Buchstaben.",
     "help.q3": "Was passiert am Ende?",
     "help.a3":
-      "Wenn Ihr alles richtig habt, bekommt Ihr Buchstaben, mit denen ihr das Lösungswort findet. Unter dem Menüpunkt Antworten seht ihr, was Ihr nochmal prüfen solltet.",
+      "Wenn alle Antworten richtig sind, könnt Ihr Buchstaben sammeln und auf der Tafel zum Lösungswort zusammensetzen.",
     "help.back": "Zurück",
 
     "rate.title": "Gebt uns Feedback",
@@ -142,6 +169,7 @@ const I18N = {
   en: {
     "nav.home": "Home",
     "nav.overview": "Answers",
+    "nav.board": "Board",
     "nav.help": "Help",
     "nav.rate": "Rate",
 
@@ -155,9 +183,9 @@ const I18N = {
 
     "intro.title": "How it works",
     "intro.text1":
-      "During your journey through the institute, you will receive lots of exciting information. If you listen carefully, you will also get the answers to our rally questions at the individual stations!",
+      "During your journey through the institute, you will receive lots of exciting information. If you listen carefully, you will also get the answers to our rally questions at the individual stations.",
     "intro.text2":
-      "For each correct answer, you receive two letters that will form the final solution word.",
+      "When all questions are answered correctly, you can unlock letters and build the final solution word.",
     "intro.cta": "Continue",
 
     "install.title": "Add the app to your Home Screen",
@@ -183,27 +211,53 @@ const I18N = {
       "Not all answers are correct yet. Check the overview to see which ones are wrong and correct them.",
 
     "overview.headline.allCorrect":
-      "Show your correct answers and collect the letters for your solution word!",
+      "All answers are correct. Now you can unlock your letters via the locks.",
     "overview.headline.notAllCorrect":
       "Not all answers are correct yet. Check the overview to see which ones are wrong and correct them.",
     "overview.notAnswered": "not answered",
     "overview.correct": "correct",
     "overview.wrong": "wrong",
     "overview.editAria": "Edit answer for question {n}",
+    "overview.unlockAria": "Unlock letters for question {n}",
+    "overview.unlocked": "unlocked",
+    "overview.locked": "still locked",
+
+    "unlock.title": "Letters unlocked",
+    "unlock.alreadyTitle": "Note",
+    "unlock.alreadyText": "You have already unlocked these letters.",
 
     "done.title": "Well done!",
     "done.text":
-      "You answered everything correctly. Collect letters from your supervisors and find the solution word!",
-    "done.toOverview": "Go to your answers",
+      "You answered everything correctly. Go to “Answers” and open the locks to unlock your letters.",
+    "done.toOverview": "Collect letters now",
+
+    "board.title": "Board",
+    "board.intro":
+      "Drag the unlocked letters into the fields and build the solution word.",
+    "board.empty":
+      "You have not unlocked any letters yet. Go to “Answers” first and open the locks.",
+    "board.hint":
+      "Drag the letters into the empty fields.",
+    "board.poolTitle": "Letters",
+    "board.check": "Check word",
+    "board.successTitle": "Done!",
+    "board.successText":
+      "You found the solution word: ALGORITHMUS. Now you can collect your letters from the supervisors.",
+    "board.incomplete":
+      "Not all letters have been unlocked yet.",
+    "board.tryAgain":
+      "That is not correct yet. Rearrange the letters.",
+    "board.slotAria": "Field {n}",
 
     "help.title": "FAQ",
     "help.q1": "How does the rally work?",
     "help.a1": "Answer the questions together. Your selection is saved automatically.",
     "help.q2": "How can we edit answers?",
-    "help.a2": 'Go to "Answers" and tap the pencil icon for the question.',
+    "help.a2":
+      'Go to "Answers" and tap the pencil icon. If all questions are correct, a lock appears there to unlock the letters.',
     "help.q3": "What happens at the end?",
     "help.a3":
-      "If everything is correct, you’ll get the completion screen. Otherwise, the overview shows what you should check again.",
+      "If all answers are correct, you can collect letters and arrange them on the board to build the solution word.",
     "help.back": "Back",
 
     "rate.title": "Give us feedback",
@@ -270,7 +324,12 @@ const QUIZ_DE = [
   {
     q: "Was beobachtete Josef von Fraunhofer im Sonnenlicht mit einem Prisma?",
     img: "./assets/img/quiz/q7_josef.png",
-    options: ["Viele dunkle Linien im Farbspektrum", "Blitze im Licht", "Eine zweite Sonne", "Bewegte Farbkreise"],
+    options: [
+      "Viele dunkle Linien im Farbspektrum",
+      "Blitze im Licht",
+      "Eine zweite Sonne",
+      "Bewegte Farbkreise",
+    ],
     correct: 0,
   },
   {
@@ -361,10 +420,11 @@ const STORAGE_KEY = "girlsday_answers";
 const RATE_KEY = "girlsday_rating";
 const LAST_KEY = "girlsday_last";
 const NOTICE_KEY = "girlsday_notice";
+const LETTERS_KEY = "girlsday_letters";
+const BOARD_SLOTS_KEY = "girlsday_board_slots";
 
 /* ===== Assets ===== */
 const LOGO_ITWM = "./assets/logos/logo-itwm.svg";
-
 const START_BUILDING = "./assets/img/start/itwm-gebaeude.png";
 const START_HOFER = "./assets/img/start/frau-n-hofer-start.png";
 const INTRO_IMAGE = "./assets/img/start/how-it-works.png";
@@ -376,9 +436,12 @@ const INSTALL_ASSETS = {
 
 const ICON_HOME = "./assets/icons/icon-home.svg";
 const ICON_OVERVIEW = "./assets/icons/icon-uebersicht.svg";
+const ICON_BOARD = "./assets/icons/icon-tafel.svg";
 const ICON_HELP = "./assets/icons/icon-hilfe.svg";
 const ICON_RATE = "./assets/icons/icon-bewerten.svg";
 const ICON_EDIT = "./assets/icons/icon-edit.svg";
+const ICON_LOCK = "./assets/icons/icon-lock.svg";
+const ICON_UNLOCK = "./assets/icons/icon-unlock.svg";
 
 const ICON_IOS_SHARE = "./assets/icons/Icon_teilen.svg";
 const ICON_IOS_PLUS = "./assets/icons/Icon_plus.svg";
@@ -386,6 +449,37 @@ const ICON_IOS_CHECK = "./assets/icons/Icon_check.svg";
 
 const SUCCESS_IMAGE = "./assets/img/quiz/success-screen.jpg";
 const HELP_IMAGE = "./assets/img/help/help.png";
+const BOARD_BG = "./assets/img/board/board-bg.png";
+
+/* ===== Puzzle Data ===== */
+const LETTERS = [
+  { id: "l0", char: "A" },
+  { id: "l1", char: "L" },
+  { id: "l2", char: "G" },
+  { id: "l3", char: "O" },
+  { id: "l4", char: "R" },
+  { id: "l5", char: "I" },
+  { id: "l6", char: "T" },
+  { id: "l7", char: "H" },
+  { id: "l8", char: "M" },
+  { id: "l9", char: "U" },
+  { id: "l10", char: "S" },
+];
+
+const LETTER_REWARDS = [
+  ["l0", "l1"], // A L
+  ["l2"],       // G
+  ["l3"],       // O
+  ["l4", "l5"], // R I
+  ["l6"],       // T
+  ["l7"],       // H
+  ["l8"],       // M
+  ["l9", "l10"] // U S
+];
+
+const LETTER_POOL_ORDER = ["l4", "l2", "l9", "l0", "l7", "l10", "l3", "l6", "l1", "l8", "l5"];
+const SOLUTION_SLOT_IDS = ["l0", "l1", "l2", "l3", "l4", "l5", "l6", "l7", "l8", "l9", "l10"];
+const TOP_ROW_SLOT_COUNT = 6;
 
 /* ===== Storage ===== */
 function loadAnswers() {
@@ -408,20 +502,22 @@ function saveAnswer(questionIndex, optionIndex) {
 
 function countCorrect() {
   const answers = loadAnswers();
-  const QUIZ = getQuiz();
+  const quiz = getQuiz();
   let correct = 0;
-  QUIZ.forEach((item, i) => {
+  quiz.forEach((item, i) => {
     const picked = answers[String(i)];
-    if (typeof picked === "number" && Number.isFinite(picked) && picked === item.correct) correct += 1;
+    if (typeof picked === "number" && Number.isFinite(picked) && picked === item.correct) {
+      correct += 1;
+    }
   });
   return correct;
 }
 
 function getWrongQuestionIndices() {
   const answers = loadAnswers();
-  const QUIZ = getQuiz();
+  const quiz = getQuiz();
 
-  return QUIZ.reduce((acc, item, i) => {
+  return quiz.reduce((acc, item, i) => {
     const picked = answers[String(i)];
     const isCorrect =
       typeof picked === "number" &&
@@ -441,6 +537,158 @@ function getNextWrongQuestionIndex(currentIndex) {
 
   const nextAfterCurrent = wrong.find((idx) => idx > currentIndex);
   return nextAfterCurrent ?? wrong[0];
+}
+
+/* ===== Letter / Board State ===== */
+function loadLettersState() {
+  try {
+    const raw = localStorage.getItem(LETTERS_KEY);
+    const parsed = raw ? JSON.parse(raw) : {};
+    const unlocked = Array.isArray(parsed.unlocked) ? parsed.unlocked : [];
+    return {
+      unlocked: unlocked
+        .map((n) => Number(n))
+        .filter((n) => Number.isInteger(n) && n >= 0 && n < LETTER_REWARDS.length),
+      solved: Boolean(parsed.solved),
+    };
+  } catch {
+    return { unlocked: [], solved: false };
+  }
+}
+
+function saveLettersState(state) {
+  try {
+    localStorage.setItem(
+      LETTERS_KEY,
+      JSON.stringify({
+        unlocked: Array.isArray(state?.unlocked) ? state.unlocked : [],
+        solved: Boolean(state?.solved),
+      })
+    );
+  } catch {}
+}
+
+function isLetterUnlocked(questionIndex) {
+  const state = loadLettersState();
+  return state.unlocked.includes(questionIndex);
+}
+
+function getRewardLetterIds(questionIndex) {
+  return LETTER_REWARDS[questionIndex] || [];
+}
+
+function getRewardLetterChars(questionIndex) {
+  const byId = new Map(LETTERS.map((item) => [item.id, item.char]));
+  return getRewardLetterIds(questionIndex).map((id) => byId.get(id)).filter(Boolean);
+}
+
+function unlockLetterReward(questionIndex) {
+  const state = loadLettersState();
+  if (!state.unlocked.includes(questionIndex)) {
+    state.unlocked.push(questionIndex);
+    state.unlocked.sort((a, b) => a - b);
+    saveLettersState(state);
+  }
+  ensureBoardSlots();
+  return getRewardLetterChars(questionIndex);
+}
+
+function markBoardSolved() {
+  const state = loadLettersState();
+  state.solved = true;
+  saveLettersState(state);
+}
+
+function allLetterRewardsUnlocked() {
+  const state = loadLettersState();
+  return state.unlocked.length === LETTER_REWARDS.length;
+}
+
+function getUnlockedLetterIds() {
+  const state = loadLettersState();
+  const ids = [];
+  state.unlocked.forEach((questionIndex) => {
+    getRewardLetterIds(questionIndex).forEach((id) => {
+      if (!ids.includes(id)) ids.push(id);
+    });
+  });
+  return ids;
+}
+
+function loadBoardSlots() {
+  try {
+    const raw = localStorage.getItem(BOARD_SLOTS_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    const base = Array.from({ length: SOLUTION_SLOT_IDS.length }, (_, i) =>
+      typeof parsed[i] === "string" ? parsed[i] : null
+    );
+    return base;
+  } catch {
+    return Array.from({ length: SOLUTION_SLOT_IDS.length }, () => null);
+  }
+}
+
+function saveBoardSlots(slots) {
+  try {
+    localStorage.setItem(BOARD_SLOTS_KEY, JSON.stringify(slots));
+  } catch {}
+}
+
+function ensureBoardSlots() {
+  const slots = loadBoardSlots();
+  const unlockedIds = getUnlockedLetterIds();
+  const cleaned = slots.map((id) => (id && unlockedIds.includes(id) ? id : null));
+  saveBoardSlots(cleaned);
+  return cleaned;
+}
+
+function getLetterById(id) {
+  return LETTERS.find((item) => item.id === id) || null;
+}
+
+function getAvailableBoardLetters() {
+  const unlockedIds = getUnlockedLetterIds();
+  const slots = ensureBoardSlots();
+  const assigned = slots.filter(Boolean);
+
+  return LETTER_POOL_ORDER
+    .filter((id) => unlockedIds.includes(id) && !assigned.includes(id))
+    .map((id) => getLetterById(id))
+    .filter(Boolean);
+}
+
+function isBoardSolved() {
+  const slots = ensureBoardSlots();
+  if (slots.some((id) => !id)) return false;
+  return slots.every((id, index) => id === SOLUTION_SLOT_IDS[index]);
+}
+
+function moveLetterToSlot(letterId, slotIndex) {
+  const slots = ensureBoardSlots();
+  const previousSlot = slots.indexOf(letterId);
+  const targetLetter = slots[slotIndex];
+
+  if (previousSlot !== -1) {
+    slots[previousSlot] = null;
+  }
+
+  if (targetLetter && targetLetter !== letterId) {
+    if (previousSlot !== -1) {
+      slots[previousSlot] = targetLetter;
+    }
+  }
+
+  slots[slotIndex] = letterId;
+  saveBoardSlots(slots);
+}
+
+function removeLetterFromSlot(letterId) {
+  const slots = ensureBoardSlots();
+  const previousSlot = slots.indexOf(letterId);
+  if (previousSlot !== -1) {
+    slots[previousSlot] = null;
+    saveBoardSlots(slots);
+  }
 }
 
 /* ===== Notice ===== */
@@ -483,13 +731,14 @@ function resumeLast() {
   if (last.screen === "intro") return renderIntro();
   if (last.screen === "install") return renderInstall(last.platform || "ios");
 
-  const QUIZ = getQuiz();
+  const quiz = getQuiz();
   if (last.screen === "question" && typeof last.index === "number") {
-    const safeIndex = Math.min(Math.max(last.index, 0), QUIZ.length - 1);
+    const safeIndex = Math.min(Math.max(last.index, 0), quiz.length - 1);
     return renderQuestion(safeIndex, Boolean(last.fromOverview));
   }
 
   if (last.screen === "overview") return renderOverview();
+  if (last.screen === "board") return renderBoard();
   if (last.screen === "help") return renderHelp(last.returnTo || null);
   if (last.screen === "rate") return renderRate();
   if (last.screen === "done") return renderDone();
@@ -520,6 +769,11 @@ function navHTML(active) {
         <span class="nav-label">${escapeHtml(t("nav.overview"))}</span>
       </button>
 
+      <button class="nav-item ${active === "board" ? "active" : ""}" data-nav="board" type="button">
+        <img class="nav-icon-img" src="${ICON_BOARD}" alt="" />
+        <span class="nav-label">${escapeHtml(t("nav.board"))}</span>
+      </button>
+
       <button class="nav-item ${active === "help" ? "active" : ""}" data-nav="help" type="button">
         <img class="nav-icon-img" src="${ICON_HELP}" alt="" />
         <span class="nav-label">${escapeHtml(t("nav.help"))}</span>
@@ -540,6 +794,7 @@ function bindNav() {
 
       if (target === "home") return renderStart();
       if (target === "overview") return renderOverview();
+      if (target === "board") return renderBoard();
       if (target === "rate") return renderRate();
 
       if (target === "help") {
@@ -561,8 +816,8 @@ function escapeHtml(str) {
 }
 
 function progressHTML(index) {
-  const QUIZ = getQuiz();
-  const total = QUIZ.length;
+  const quiz = getQuiz();
+  const total = quiz.length;
   const current = index + 1;
   const pct = Math.round((current / total) * 100);
 
@@ -582,6 +837,97 @@ function progressHTML(index) {
 
 function confettiHTML() {
   return `<div class="confetti" id="confetti"></div>`;
+}
+
+function unlockOverlayHTML(chunk = "") {
+  return `
+    <div class="unlock-overlay" id="unlockOverlay" aria-hidden="true">
+      <div class="unlock-overlay-card">
+        <div class="unlock-overlay-title">${escapeHtml(t("unlock.title"))}</div>
+        <div class="unlock-letters">${escapeHtml(chunk)}</div>
+      </div>
+    </div>
+  `;
+}
+
+/* ===== Audio / Unlock Animation ===== */
+function playUnlockSound() {
+  try {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return;
+
+    const ctx = new AudioCtx();
+    const now = ctx.currentTime;
+
+    const osc1 = ctx.createOscillator();
+    const gain1 = ctx.createGain();
+
+    osc1.type = "triangle";
+    osc1.frequency.setValueAtTime(740, now);
+    osc1.frequency.exponentialRampToValueAtTime(1040, now + 0.16);
+
+    gain1.gain.setValueAtTime(0.0001, now);
+    gain1.gain.exponentialRampToValueAtTime(0.08, now + 0.02);
+    gain1.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+
+    osc1.connect(gain1);
+    gain1.connect(ctx.destination);
+
+    osc1.start(now);
+    osc1.stop(now + 0.24);
+
+    setTimeout(() => {
+      try {
+        ctx.close();
+      } catch {}
+    }, 400);
+  } catch {}
+}
+
+function animateLettersToBoard(chunk, triggerEl) {
+  const navBoard = document.querySelector('.nav-item[data-nav="board"]');
+  if (!navBoard || !triggerEl) return Promise.resolve();
+
+  const startRect = triggerEl.getBoundingClientRect();
+  const endRect = navBoard.getBoundingClientRect();
+
+  const flyer = document.createElement("div");
+  flyer.className = "letter-flyer";
+  flyer.textContent = chunk;
+
+  const startX = startRect.left + startRect.width / 2;
+  const startY = startRect.top + startRect.height / 2;
+  const endX = endRect.left + endRect.width / 2;
+  const endY = endRect.top + endRect.height / 2;
+
+  const dx = endX - startX;
+  const dy = endY - startY;
+
+  flyer.style.left = `${startX}px`;
+  flyer.style.top = `${startY}px`;
+  flyer.style.setProperty("--fly-x", `${dx}px`);
+  flyer.style.setProperty("--fly-y", `${dy}px`);
+
+  document.body.appendChild(flyer);
+  navBoard.classList.add("nav-item--target");
+
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      flyer.classList.add("is-flying");
+      playUnlockSound();
+    }, 60);
+
+    setTimeout(() => {
+      navBoard.classList.add("is-received");
+    }, 620);
+
+    setTimeout(() => {
+      flyer.remove();
+      navBoard.classList.remove("nav-item--target");
+      navBoard.classList.remove("is-received");
+      resolve();
+    }, 1150);
+  });
 }
 
 /* ===== Confetti ===== */
@@ -614,7 +960,7 @@ function launchConfetti() {
   const pieces = 70;
   const width = host.clientWidth || window.innerWidth;
 
-  for (let i = 0; i < pieces; i++) {
+  for (let i = 0; i < pieces; i += 1) {
     const el = document.createElement("div");
     el.className = "confetti-piece";
 
@@ -685,7 +1031,7 @@ function launchStartMotion() {
   const placed = [];
   function placeNoOverlap(size, zoneFn, tries = 18) {
     const r = size * 0.55;
-    for (let t = 0; t < tries; t++) {
+    for (let t = 0; t < tries; t += 1) {
       const { x, y } = zoneFn();
       let ok = true;
       for (const p of placed) {
@@ -707,7 +1053,7 @@ function launchStartMotion() {
     return { x, y };
   }
 
-  for (let i = 0; i < starCount; i++) {
+  for (let i = 0; i < starCount; i += 1) {
     const el = document.createElement("div");
     el.className = "float-piece is-star";
 
@@ -740,7 +1086,7 @@ function launchStartMotion() {
     host.appendChild(el);
   }
 
-  for (let i = 0; i < formulaCount; i++) {
+  for (let i = 0; i < formulaCount; i += 1) {
     const el = document.createElement("div");
     el.className = "float-piece is-formula";
     el.textContent = FORMULAS[Math.floor(Math.random() * FORMULAS.length)];
@@ -771,9 +1117,9 @@ function launchStartMotion() {
 
 /* ===== Multiple Choice ===== */
 function optionsHTML(index, selectedIndex) {
-  const QUIZ = getQuiz();
+  const quiz = getQuiz();
   const name = `q_${index}`;
-  return QUIZ[index].options
+  return quiz[index].options
     .map((opt, i) => {
       const checked = String(i) === String(selectedIndex) ? "checked" : "";
       return `
@@ -1000,12 +1346,12 @@ function renderInstall(platform = "ios") {
 function renderQuestion(index, fromOverview = false) {
   setLastScreen({ screen: "question", index, fromOverview });
 
-  const QUIZ = getQuiz();
+  const quiz = getQuiz();
   const answers = loadAnswers();
   const selected = typeof answers[String(index)] === "number" ? answers[String(index)] : null;
-  const isLast = index === QUIZ.length - 1;
+  const isLast = index === quiz.length - 1;
   const nextLabel = fromOverview ? t("quiz.next") : isLast ? t("quiz.done") : t("quiz.next");
-  const imgSrc = QUIZ[index].img;
+  const imgSrc = quiz[index].img;
 
   root.innerHTML = `
     <div class="screen">
@@ -1017,7 +1363,7 @@ function renderQuestion(index, fromOverview = false) {
         ${progressHTML(index)}
 
         <h2 class="question">${escapeHtml(t("quiz.questionTitle", { n: index + 1 }))}</h2>
-        <p>${escapeHtml(QUIZ[index].q)}</p>
+        <p>${escapeHtml(quiz[index].q)}</p>
 
         <div class="mc-group" role="radiogroup" aria-label="${escapeHtml(t("quiz.optionsAria"))}">
           ${optionsHTML(index, selected)}
@@ -1057,7 +1403,7 @@ function renderQuestion(index, fromOverview = false) {
     if (picked !== null) saveAnswer(index, picked);
 
     const correct = countCorrect();
-    const total = QUIZ.length;
+    const total = quiz.length;
 
     if (fromOverview) {
       if (correct === total) return renderDone();
@@ -1082,30 +1428,60 @@ function renderQuestion(index, fromOverview = false) {
 function renderOverview() {
   setLastScreen({ screen: "overview" });
 
-  const QUIZ = getQuiz();
+  const quiz = getQuiz();
   const correct = countCorrect();
-  const total = QUIZ.length;
+  const total = quiz.length;
   const allCorrect = correct === total;
   const headline = allCorrect ? t("overview.headline.allCorrect") : t("overview.headline.notAllCorrect");
   const answers = loadAnswers();
+  const notice = popNotice();
+
   let list = "";
 
-  QUIZ.forEach((item, i) => {
+  quiz.forEach((item, i) => {
     const picked = answers[String(i)];
     const has = typeof picked === "number" && Number.isFinite(picked);
-    const isCorrect = has && picked === item.correct;
+    const isCorrectAnswer = has && picked === item.correct;
 
-    const statusSymbol = !has ? "–" : isCorrect ? "✓" : "✕";
-    const statusClass = !has ? "is-empty" : isCorrect ? "is-correct" : "is-wrong";
-    const answerClass = !has ? "" : isCorrect ? "is-correct" : "is-wrong";
+    const statusSymbol = !has ? "–" : isCorrectAnswer ? "✓" : "✕";
+    const statusClass = !has ? "is-empty" : isCorrectAnswer ? "is-correct" : "is-wrong";
+    const answerClass = !has ? "" : isCorrectAnswer ? "is-correct" : "is-wrong";
     const pickedText = has ? item.options[picked] : "";
+
+    const unlocked = isLetterUnlocked(i);
+    const rewardText = getRewardLetterChars(i).join(" ");
+
+    const actionHTML = allCorrect
+      ? `
+        <button
+          class="editIconBtn lockIconBtn ${unlocked ? "is-unlocked" : ""}"
+          data-unlock-index="${i}"
+          type="button"
+          aria-label="${escapeHtml(t("overview.unlockAria", { n: i + 1 }))}"
+        >
+          <img class="editIconImg" src="${unlocked ? ICON_UNLOCK : ICON_LOCK}" alt="" />
+        </button>
+        <div class="overview-unlock-state">
+          ${escapeHtml(unlocked ? `${rewardText} · ${t("overview.unlocked")}` : t("overview.locked"))}
+        </div>
+      `
+      : `
+        <button
+          class="editIconBtn"
+          data-index="${i}"
+          type="button"
+          aria-label="${escapeHtml(t("overview.editAria", { n: i + 1 }))}"
+        >
+          <img class="editIconImg" src="${ICON_EDIT}" alt="" />
+        </button>
+      `;
 
     list += `
       <div class="overview-item">
         <div class="overview-head">
           <strong>${escapeHtml(t("quiz.questionTitle", { n: i + 1 }))}</strong>
           <span class="q-status ${statusClass}" aria-label="${escapeHtml(
-            !has ? t("overview.notAnswered") : isCorrect ? t("overview.correct") : t("overview.wrong")
+            !has ? t("overview.notAnswered") : isCorrectAnswer ? t("overview.correct") : t("overview.wrong")
           )}">
             ${statusSymbol}
           </span>
@@ -1117,11 +1493,7 @@ function renderOverview() {
           ${has ? escapeHtml(pickedText) : ""}
         </div>
 
-        <button class="editIconBtn" data-index="${i}" type="button" aria-label="${escapeHtml(
-          t("overview.editAria", { n: i + 1 })
-        )}">
-          <img class="editIconImg" src="${ICON_EDIT}" alt="" />
-        </button>
+        ${actionHTML}
       </div>
     `;
   });
@@ -1129,8 +1501,10 @@ function renderOverview() {
   root.innerHTML = `
     <div class="screen">
       ${headerHTML()}
+      ${unlockOverlayHTML("")}
 
       <div class="content">
+        ${notice ? `<div class="overview-notice">${escapeHtml(notice)}</div>` : ""}
         <h2 class="overview-title">${escapeHtml(headline)}</h2>
         ${list}
       </div>
@@ -1139,14 +1513,82 @@ function renderOverview() {
     </div>
   `;
 
-  document.querySelectorAll(".editIconBtn").forEach((btn) => {
+  document.querySelectorAll(".editIconBtn[data-index]").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const idx = parseInt(e.currentTarget.dataset.index, 10);
       renderQuestion(idx, true);
     });
   });
 
+  document.querySelectorAll(".lockIconBtn[data-unlock-index]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const idx = parseInt(e.currentTarget.dataset.unlockIndex, 10);
+      if (!Number.isInteger(idx)) return;
+
+      if (isLetterUnlocked(idx)) {
+        showAlreadyUnlockedOverlay();
+        return;
+      }
+
+      const letters = unlockLetterReward(idx);
+      showUnlockOverlay(letters.join(" "), idx, e.currentTarget);
+    });
+  });
+
   bindNav();
+}
+
+function showUnlockOverlay(chunk, index, triggerEl) {
+  const overlay = document.getElementById("unlockOverlay");
+  if (!overlay) return;
+
+  overlay.innerHTML = `
+    <div class="unlock-overlay-card">
+      <div class="unlock-overlay-title">${escapeHtml(t("unlock.title"))}</div>
+      <div class="unlock-letters unlock-letters--burst">${escapeHtml(chunk)}</div>
+    </div>
+  `;
+  overlay.setAttribute("aria-hidden", "false");
+  overlay.classList.add("is-visible");
+
+  setTimeout(async () => {
+    overlay.classList.remove("is-visible");
+    overlay.setAttribute("aria-hidden", "true");
+
+    await animateLettersToBoard(chunk, triggerEl);
+
+    if (index === LETTER_REWARDS.length - 1 || allLetterRewardsUnlocked()) {
+      renderBoard();
+      return;
+    }
+
+    renderOverview();
+  }, 900);
+}
+
+function showAlreadyUnlockedOverlay() {
+  const overlay = document.getElementById("unlockOverlay");
+  if (!overlay) return;
+
+  overlay.innerHTML = `
+    <div class="unlock-overlay-card">
+      <div class="unlock-overlay-title" style="color:#bb0056;">
+        ${escapeHtml(t("unlock.alreadyTitle"))}
+      </div>
+
+      <div style="font-size:18px;">
+        ${escapeHtml(t("unlock.alreadyText"))}
+      </div>
+    </div>
+  `;
+
+  overlay.setAttribute("aria-hidden", "false");
+  overlay.classList.add("is-visible");
+
+  setTimeout(() => {
+    overlay.classList.remove("is-visible");
+    overlay.setAttribute("aria-hidden", "true");
+  }, 1500);
 }
 
 function renderDone() {
@@ -1179,6 +1621,342 @@ function renderDone() {
   launchConfetti();
 }
 
+function boardSlotsHTML(slots) {
+  const topSlots = slots.slice(0, TOP_ROW_SLOT_COUNT);
+  const bottomSlots = slots.slice(TOP_ROW_SLOT_COUNT);
+
+  const renderRow = (rowSlots, rowOffset, rowClass) => `
+    <div class="board-slot-row ${rowClass}">
+      ${rowSlots
+        .map((letterId, index) => {
+          const absoluteIndex = rowOffset + index;
+          const letter = letterId ? getLetterById(letterId) : null;
+          return `
+            <div class="board-slot ${letter ? "has-letter" : ""}" data-slot-index="${absoluteIndex}" aria-label="${escapeHtml(
+              t("board.slotAria", { n: absoluteIndex + 1 })
+            )}">
+              ${
+                letter
+                  ? `
+                    <button
+                      class="board-letter board-letter--slot"
+                      type="button"
+                      data-letter-id="${letter.id}"
+                      data-origin-slot="${absoluteIndex}"
+                      aria-label="${escapeHtml(letter.char)}"
+                    >
+                      ${escapeHtml(letter.char)}
+                    </button>
+                  `
+                  : `<span class="board-slot-placeholder">·</span>`
+              }
+            </div>
+          `;
+        })
+        .join("")}
+    </div>
+  `;
+
+  return `
+    <div class="board-slot-grid" id="boardSlotGrid">
+      ${renderRow(topSlots, 0, "is-top")}
+      ${renderRow(bottomSlots, TOP_ROW_SLOT_COUNT, "is-bottom")}
+    </div>
+  `;
+}
+
+function boardPoolHTML(letters) {
+  return `
+    <div class="board-pool">
+      <div class="board-pool-title">${escapeHtml(t("board.poolTitle"))}</div>
+      <div class="board-pool-dropzone" id="boardPoolDropzone">
+        ${letters
+          .map(
+            (letter) => `
+              <button
+                class="board-letter board-letter--pool"
+                type="button"
+                data-letter-id="${letter.id}"
+                data-origin-slot=""
+                aria-label="${escapeHtml(letter.char)}"
+              >
+                ${escapeHtml(letter.char)}
+              </button>
+            `
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
+}
+
+function renderBoard(message = "") {
+  setLastScreen({ screen: "board" });
+
+  const unlockedIds = getUnlockedLetterIds();
+  const hasLetters = unlockedIds.length > 0;
+  const allUnlocked = allLetterRewardsUnlocked();
+  const slots = ensureBoardSlots();
+  const poolLetters = getAvailableBoardLetters();
+  const solved = isBoardSolved();
+
+  root.innerHTML = `
+    <div class="screen screen--board">
+      ${headerHTML()}
+      ${confettiHTML()}
+
+      <div class="content board-content">
+        <h2 class="board-title">${escapeHtml(t("board.title"))}</h2>
+        <p class="board-intro">${escapeHtml(t("board.intro"))}</p>
+
+        ${
+          !hasLetters
+            ? `<div class="overview-notice">${escapeHtml(t("board.empty"))}</div>`
+            : `
+              <div class="board-visual" style="background-image:url('${BOARD_BG}')">
+                <div class="board-surface">
+                  ${boardSlotsHTML(slots)}
+                </div>
+              </div>
+
+              <p class="board-hint">${escapeHtml(allUnlocked ? t("board.hint") : t("board.incomplete"))}</p>
+
+              ${boardPoolHTML(poolLetters)}
+
+              ${
+                message
+                  ? `<div class="overview-notice board-notice">${escapeHtml(message)}</div>`
+                  : ""
+              }
+
+              <button class="btn" id="boardCheckBtn" type="button">${escapeHtml(t("board.check"))}</button>
+              <div id="boardSuccessHost"></div>
+            `
+        }
+      </div>
+
+      ${navHTML("board")}
+    </div>
+  `;
+
+  if (hasLetters) {
+    bindBoardInteractions();
+
+    document.getElementById("boardCheckBtn")?.addEventListener("click", () => {
+      if (!allUnlocked) {
+        return renderBoard(t("board.incomplete"));
+      }
+
+      if (!isBoardSolved()) {
+        return renderBoard(t("board.tryAgain"));
+      }
+
+      markBoardSolved();
+      renderBoardSuccess();
+    });
+
+    if (solved) {
+      renderBoardSuccess();
+    }
+  }
+
+  bindNav();
+}
+
+function renderBoardSuccess() {
+
+  root.innerHTML = `
+    <div class="screen">
+      ${confettiHTML()}
+      ${headerHTML()}
+
+      <div class="content done-content">
+
+        <h1 class="done-title">
+          Geschafft!
+        </h1>
+
+        <p class="done-text">
+        Ihr habt das Lösungswort gefunden: <strong>ALGORITHMUS</strong>.<br>
+        Zeigt es vor, dann erhaltet Ihr am Ende der Veranstaltung eine kleine Überraschung!
+        </p>
+
+        <img
+          class="done-hero"
+          src="./assets/img/quiz/success-screen.jpg"
+          alt="Frau N. Hofer klatscht"
+        />
+
+        <button class="btn" id="boardBackHome">
+          Zur Startseite
+        </button>
+
+      </div>
+
+      ${navHTML("home")}
+    </div>
+  `;
+
+  document
+    .getElementById("boardBackHome")
+    ?.addEventListener("click", () => renderStart());
+
+  bindNav();
+  launchConfetti();
+}
+
+/* ===== Pointer-based Board Drag ===== */
+function bindBoardInteractions() {
+  const letters = Array.from(document.querySelectorAll(".board-letter"));
+  const poolZone = document.getElementById("boardPoolDropzone");
+  if (!letters.length) return;
+
+  let dragState = null;
+
+  function clearStates() {
+    document.querySelectorAll(".board-slot").forEach((slot) => {
+      slot.classList.remove("is-over");
+    });
+    if (poolZone) {
+      poolZone.classList.remove("is-over");
+    }
+  }
+
+  function finishDrag(applyDrop = true) {
+    if (!dragState) return;
+
+    const { clone, letterId, sourceSlot } = dragState;
+
+    if (clone?.parentNode) {
+      clone.remove();
+    }
+
+    clearStates();
+
+    if (applyDrop) {
+      const overSlotEl = dragState.overSlotIndex !== null
+        ? document.querySelector(`.board-slot[data-slot-index="${dragState.overSlotIndex}"]`)
+        : null;
+
+      if (overSlotEl) {
+        moveLetterToSlot(letterId, dragState.overSlotIndex);
+      } else if (dragState.overPool && sourceSlot !== null) {
+        removeLetterFromSlot(letterId);
+      }
+    }
+
+    dragState = null;
+    renderBoard("");
+  }
+
+  function updateDrag(clientX, clientY) {
+    if (!dragState) return;
+
+    dragState.clone.style.left = `${clientX - dragState.offsetX}px`;
+    dragState.clone.style.top = `${clientY - dragState.offsetY}px`;
+
+    const el = document.elementFromPoint(clientX, clientY);
+    const slot = el?.closest?.(".board-slot");
+    const pool = el?.closest?.(".board-pool-dropzone");
+
+    clearStates();
+    dragState.overSlotIndex = null;
+    dragState.overPool = false;
+
+    if (slot) {
+      slot.classList.add("is-over");
+      dragState.overSlotIndex = Number(slot.dataset.slotIndex);
+      return;
+    }
+
+    if (pool) {
+      pool.classList.add("is-over");
+      dragState.overPool = true;
+    }
+  }
+
+  letters.forEach((letterBtn) => {
+    letterBtn.addEventListener("pointerdown", (e) => {
+      if (e.button !== undefined && e.button !== 0) return;
+
+      const rect = letterBtn.getBoundingClientRect();
+      const clone = letterBtn.cloneNode(true);
+      clone.classList.add("board-letter--floating");
+      clone.style.width = `${rect.width}px`;
+      clone.style.height = `${rect.height}px`;
+      clone.style.left = `${rect.left}px`;
+      clone.style.top = `${rect.top}px`;
+
+      document.body.appendChild(clone);
+
+      dragState = {
+        pointerId: e.pointerId,
+        letterId: letterBtn.dataset.letterId,
+        sourceSlot:
+          letterBtn.dataset.originSlot === "" || letterBtn.dataset.originSlot == null
+            ? null
+            : Number(letterBtn.dataset.originSlot),
+        clone,
+        offsetX: e.clientX - rect.left,
+        offsetY: e.clientY - rect.top,
+        overSlotIndex: null,
+        overPool: false,
+      };
+
+      letterBtn.setPointerCapture?.(e.pointerId);
+      clone.style.left = `${e.clientX - dragState.offsetX}px`;
+      clone.style.top = `${e.clientY - dragState.offsetY}px`;
+
+      e.preventDefault();
+    });
+
+    letterBtn.addEventListener("pointermove", (e) => {
+      if (!dragState || dragState.pointerId !== e.pointerId) return;
+      updateDrag(e.clientX, e.clientY);
+      e.preventDefault();
+    });
+
+    letterBtn.addEventListener("pointerup", (e) => {
+      if (!dragState || dragState.pointerId !== e.pointerId) return;
+      finishDrag(true);
+      e.preventDefault();
+    });
+
+    letterBtn.addEventListener("pointercancel", (e) => {
+      if (!dragState || dragState.pointerId !== e.pointerId) return;
+      finishDrag(false);
+      e.preventDefault();
+    });
+  });
+
+  window.addEventListener(
+    "pointermove",
+    (e) => {
+      if (!dragState) return;
+      updateDrag(e.clientX, e.clientY);
+    },
+    { passive: false }
+  );
+
+  window.addEventListener(
+    "pointerup",
+    () => {
+      if (!dragState) return;
+      finishDrag(true);
+    },
+    { passive: false }
+  );
+
+  window.addEventListener(
+    "pointercancel",
+    () => {
+      if (!dragState) return;
+      finishDrag(false);
+    },
+    { passive: false }
+  );
+}
+
 function renderHelp(returnTo = null) {
   const prev = returnTo || getLastScreen() || { screen: "home" };
   setLastScreen({ screen: "help", returnTo: prev });
@@ -1188,7 +1966,6 @@ function renderHelp(returnTo = null) {
       ${headerHTML()}
 
       <div class="content">
-
         <img class="help-hero" src="${HELP_IMAGE}" alt="" />
 
         <div class="faq">
@@ -1218,6 +1995,7 @@ function renderHelp(returnTo = null) {
     if (target.screen === "install") return renderInstall(target.platform || "ios");
     if (target.screen === "question") return renderQuestion(target.index ?? 0, Boolean(target.fromOverview));
     if (target.screen === "overview") return renderOverview();
+    if (target.screen === "board") return renderBoard();
     if (target.screen === "rate") return renderRate();
     if (target.screen === "done") return renderDone();
     if (target.screen === "thanks") return renderThanks();
