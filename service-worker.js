@@ -32,7 +32,7 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
 
   if (req.mode === "navigate") {
-    event.respondWith(fetch(req).catch(() => caches.match("/index.html")));
+    event.respondWith(fetch(req).catch(() => caches.match("index.html")));
     return;
   }
 
